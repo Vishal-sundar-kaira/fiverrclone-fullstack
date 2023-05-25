@@ -1,0 +1,125 @@
+.hrfoot{
+    width: 100vw;
+    height: 0.2px;
+    color: gray;
+    margin:30px 0px 30px 0px;
+}
+.foot{
+    margin-top: 50px;
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    flex-direction: column;
+    .midfoot{
+        width: 90vw;
+        height: 95vh;
+        display: flex;
+        
+        .rowfoot{
+            width: 20%;
+            height: 100%;
+            display: flex;
+        
+            flex-direction: row;
+            .colfoot{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                gap: 15px;
+
+            }
+            h2{
+                font-size: 20px;
+                font: bold;
+            }
+            span{
+                display: block;
+                font-size: 20px;
+                color: gray;
+            }
+        }
+    }
+    .copyright{
+        width: 100vw;
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        hr{
+            width: 90%;
+        }
+        .copycontainer{
+            width: 90%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            .content{
+                width: 40%;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: start;
+                align-items: center;
+                .logo{
+                    font-size: 30px;
+                    color: gray;
+                    margin: 20px;
+                }
+                .rights{
+                    font-size: 20px;
+                    color: gray;
+                    margin: 20px;
+                }
+            }
+            .symbols{
+                width: 50%;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: end;
+                align-items: center;
+                img{
+                    width: 30px;
+                    height: 30px;
+                    margin: 30px;
+                }
+            }
+
+        }
+    }
+}
+@media (max-width:"998px") {
+    .foot{
+        height: 20vh;
+        .midfoot{
+            display: none;
+        }
+        .copyright{
+            hr{
+                display: none;
+            }
+            .copycontainer{
+                flex-direction: column;
+                .content{
+                    width: 100%;
+                    justify-content: center;
+                }
+                .symbols{
+                    width: 100%;
+                    justify-content: center;
+                    img{
+                        margin: 10px;
+                    }
+                }
+            }
+        }
+    }
+  
+  }

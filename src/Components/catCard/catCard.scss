@@ -1,0 +1,57 @@
+.catCard {
+    width: 20vw;
+    height: 60vh;
+    color: white;
+    position: relative;
+    cursor: pointer;
+    .slick-slide img {
+      display: block;
+      width: 100%;
+      height: 80%;
+      border-radius: 0px 0px 0px 0px;
+    }
+    .images {
+      width: 100%;
+      height: 100%;
+      margin: 10px;
+    }
+  
+    .desc {
+      font-weight: 300;
+      position: absolute;
+      top: 2vw;
+      font-size: 20px;
+      left: 2vw;
+      font-weight: 300;
+    }
+  
+    .title {
+      position: absolute;
+      top: 3vw;
+      left: 2vw;
+      font-size:35px;
+      margin: 10px 0px;
+      font-weight: 500;
+    }
+  }
+  @media (max-width:"998px") {
+   .catCard{
+    width: 40vw;
+    .desc{
+      top:4vw;
+      left: 4vw;
+    }
+    .title{
+      top: 6vw;
+      left: 4vw;
+    }
+   } 
+  }
+  @media (max-width:"480px") {
+    .catCard{
+     width: 100vw;
+     .images{
+      width: 85%;
+     }
+    } 
+   }

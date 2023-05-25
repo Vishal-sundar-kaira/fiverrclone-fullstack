@@ -1,0 +1,172 @@
+.Gigs{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 15px;
+  .container{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: start;
+    gap: 25px;
+    .breadcrumbs{
+      font-size: 2vw;
+      color: gray;
+    }
+    .dark{
+      font-size: 2vw;
+      color: black;
+      font: bolder;
+      font-weight: 800;
+    }
+    .p{
+      margin: 0px;
+      font-size: 2vw;
+      color: gray;
+    }
+    .menu{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 35vw;
+      height: 90px;
+      .left{
+       display: flex;
+       gap: 10px;
+       span{
+        font-size: 2vw;
+        color: gray;
+       }
+       input{
+        width: 10vw;
+        height: 2vw;
+        border-radius: 5px;
+        outline: none;
+        padding: 5px;
+        border: 1px solid black;
+        cursor: pointer;
+        &::placeholder{
+          width: 3vw;
+        }
+       }
+       button{
+        width: 10vw;
+        height: 3vw;
+        font-size: 1.5vw;
+        border-radius: 5px;
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+       
+      }
+      .rightmen{
+        display: flex;
+        flex-direction: column;
+        .right{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 5px;
+          position: relative;
+
+          .sortby{
+            font-size: 1.5vw;
+            color: gray;
+          }
+          .bestsell{
+            font-size: 1.5vw;
+          }
+          img{
+            width: 2vw;
+            height: 2vw;
+            cursor: pointer;
+          }
+          }
+         
+  
+        }
+        .rightmenu{
+          position: absolute;
+          bottom: -75px;
+          position: sticky;
+          right: 0px;
+          z-index: 999;
+          width: 100%;
+          padding: 10px 0px 0px 10px;
+          gap: 5px;
+          display: flex;
+          height: 60px;
+          background-color: white;
+          border: 1px solid gray;
+          flex-direction: column;
+          border-radius: 5px;
+          span{
+            cursor: pointer;
+          }
+      }
+      }
+      
+    }
+  }
+    .cards {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      flex-wrap: wrap;
+      justify-content: space-between;
+  }
+//responsive
+@media (max-width:"988px") {
+  .Gigs{
+    .container{
+      margin-bottom: 2px;
+      gap: 10px;
+      .breadcrumbs{
+        font-size: 6vw;
+      }
+      .dark{
+        font-size: 6vw;
+      }
+      .p{
+        font-size: 5vw;
+      }
+      .menu{
+        flex-direction: column;
+        gap: 2vw;
+        height: 140px;
+        .left{
+          input{
+            height: 3vw;
+          }
+          span{
+            font-size: 5vw;
+          }
+          button{
+            height: 30px;
+            font-size: 2vw;
+          }
+        }
+        .rightmen{
+          .right{
+            .sortby,.bestsell{
+              font-size: 4vw;
+            }
+            img{
+              width: 4vw;
+              height: 4vw;
+            }
+          }
+        }
+
+        .rightmen{
+          height: 100px;
+          width: 35%;
+        }
+      }
+    }
+  }
+}

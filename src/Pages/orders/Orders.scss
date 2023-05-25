@@ -1,0 +1,93 @@
+.Orders{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    .container{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        margin: 30px;
+        .title{
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+            margin: 20px 80px;
+        h1{
+            margin: 0;
+            padding: 0;
+            font-size: 2vw;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            background-color: rgb(30, 205, 30);
+            color: white;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        }
+        table{
+            width: 100%;
+            tr{
+                width: 100%;
+                height: 60px;
+                margin: 10px;
+                th{
+                    font-size: 2vw;
+                }
+                td{
+
+                    text-align: center;
+                    font-size:1vw;
+                    .image{
+                        border-radius: 0px!important;
+                        width: 2vw;
+                        height: 2vw;
+                        object-fit: cover;
+                    }
+                    img{
+                        width: 2vw;
+                        height: 2vw;
+                        cursor: pointer;
+                    }
+
+                }
+                &:nth-child(even) {
+                    background-color: #1dbf730f;
+                  }
+            }
+        }
+    }
+}
+
+@media (max-width:"980px") {
+    .Orders{
+        .container{
+            .title{
+                h1{
+                    font-size: 5vw;
+                }
+            }
+            table{
+                tr{
+                    th{
+                        font-size: 5vw;
+                    }
+                    td{
+                        font-size: 4vw;
+                        .image{
+                            width: 4vw;
+                            height: 4vw;
+                        }
+                        img{
+                            width: 4vw;
+                            height: 4vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

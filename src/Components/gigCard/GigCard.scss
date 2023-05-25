@@ -1,0 +1,191 @@
+
+hr{
+    margin: 0px;
+}
+.link{
+    z-index: 10;
+}
+.maincard{
+    width: 21vw;
+    height: fit-content;
+    border: 1px solid rgb(228, 228, 228);
+    margin-bottom: 40px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+    img{
+        width: 100%;
+        height: 30vh;
+        border-radius: 10px 10px 0px 0px;
+        
+    }
+    .name{
+        width: 100%;
+        height: 15%;
+        display: flex;
+        flex-direction: row;
+        padding: 0px 0px 5px 20px;
+        align-items: center;
+        img{
+            width: 1.5vw;
+            height: 1.5vw;
+            margin-right: 10px;
+            padding-left: 5px;
+            border-radius: 50%;
+        }
+        h2{
+            font-size: 1.5vw;
+        }
+
+    }
+    p{
+        font-size: 1.2vw;
+        padding-left: 20px;
+        width: 90%;
+        height: 15%;
+        font: bold;
+        font-weight: 500;
+    }
+    .star{
+        width: 100%;
+        height: 5%;
+        /* margin-top: 2px; */
+        display: flex;
+        flex-direction: row;
+        padding-left: 20px;
+        margin: 5px 0px;
+        img{
+            width: 1vw;
+            height: 1vw;
+            margin-right: 5px;
+        }
+        h2{
+            font-size: 0.9vw;
+            color: gold;
+        }
+    }
+    hr{
+        color: gray;
+        width: 100%;
+        margin: 0px;
+    }
+    .status{
+        width: 90%;
+        height: 13%;
+        display: flex;
+        flex-direction: row;
+        gap: 60%;
+        padding: 0px 5px 0px 20px;
+        align-items: center;
+        margin: 7px 0px;
+        img{
+            width: 1.2vw;
+            height: 1.2vw;
+        }
+        .price{
+            width: 50%;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .h2gigcard{
+                font-size: 1vw;
+                font:bold;
+            }
+            h1{
+                font-size:1vw;
+                margin: 0px;
+            }
+        }
+
+
+    }
+
+    @media (max-width:"998px") {
+        .maincard{
+            width: 40vw;
+            height: 50vh;
+            margin: 10px 0px;
+        }
+        p{
+            font-size: 2vw;
+        } 
+        .star{
+            img{
+                width: 1.5vw;
+                height: 1.5vh;
+            }
+            h2{
+                font-size: 2vw;
+            }
+        }
+        .status{
+            gap: 25vw;
+            .price{
+                h1{
+                    font-size: 2vw;
+                }
+            }
+        }
+       }
+       @media (max-width:"480px") {
+        .maincard{
+            display: flex;
+            flex-direction: row;
+            height: 20vh;
+            width: 90vw;
+            margin: 10px 0px;
+            .img{
+                width: 45%;
+                height: 100%;
+            }
+            .cardright{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                .name{
+                    img{
+                        height: 6vw;
+                        width: 6vw;
+                    }
+                    h2{
+                        font-size: 4vw;
+                    }
+                }
+                p{
+                    padding: 0;
+                    font-size: 3vw;
+                }
+                hr{
+                    display: none;
+                }
+                .star{
+                    img{
+                        width: 4vw;
+                        height: 4vw;
+                    }
+                    h2{
+                        font-size: 4vw;
+                    }
+                }
+                .status{
+                    gap: 15vw;
+                    .imag{
+                        width: 5vw;
+                        height: 5vw;
+                    }
+                    .price{
+                        .h2gigcard{
+                            font-size: 4vw;
+                        }
+                        h1{
+                            font-size: 4vw;
+                        }
+                    }
+                }
+            }
+        }
+       }
