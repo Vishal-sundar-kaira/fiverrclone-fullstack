@@ -22,7 +22,7 @@ const UserSchema=new Schema({
     },
     phone:{
         type:Number,
-        required:true
+        required:false
     },
     desc:{
         type:String,
@@ -31,6 +31,10 @@ const UserSchema=new Schema({
     isSeller:{
         type:Boolean,
         default:false
+    },
+    country:{
+        type:String,
+        required:true
     }
 
 },{timestamps:true})

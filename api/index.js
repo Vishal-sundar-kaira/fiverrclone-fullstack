@@ -8,6 +8,7 @@ const gigRoute=require("./routes/gig.js")
 const messageRoute=require("./routes/message.js")
 const orderRoute=require("./routes/order.js")
 const authRoute=require("./routes/auth.js")
+const cookieParser = require('cookie-parser');
 
 const app=express();
 dotenv.config();
@@ -22,7 +23,8 @@ mongoose.connect(process.env.MONGO, {
   .catch((error) => {
     console.error('Error connecting to the database:', error);
   });
-
+app.use(express.json())//first middleware allowing to send json from client side to server
+app.use(cookieParser())//second middleware for cookie for storing jwt token.
 app.use("/api/user",userRoute);
 app.use("/api/gig",gigRoute);
 app.use("/api/order",orderRoute);
