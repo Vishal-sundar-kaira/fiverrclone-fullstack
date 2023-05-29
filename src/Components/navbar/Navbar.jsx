@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useEffect, useState} from "react";
+import { Link, useLocation ,useNavigate} from "react-router-dom";
 import "./Navbar.scss";
 import gig from "../../images/gig1.jpg"
 import Aos from "aos"
 import { GiHamburgerMenu } from 'react-icons/gi';
 import "aos/dist/aos.css"
+import newRequest from "../../utils/newRequest";
 function Navbar() {
   let r=0
   useEffect(()=>{
@@ -28,14 +29,22 @@ function Navbar() {
       window.removeEventListener("scroll", isActive);
     };
   }, []);
+  const Navigate=useNavigate();
+  const handlelogout=async()=>{
+    try{
+      await newRequest.post("/auth/logout");
+      localStorage.setItem("currentUser",null)
+      Navigate("/")
+    }catch(err)
+    {
+      console.log(err)
+    }
+  }
+
 
   // const currentUser = null
 
-  const currentUser = {
-    id: 1,
-    username: "Vishal",
-    isSeller: true,
-  };
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"))
 
   return (
     <>
@@ -52,10 +61,10 @@ function Navbar() {
           <span>Explore</span>
           <span>English</span>
           {!currentUser?.isSeller && <span>Become a Seller</span>}
-          {currentUser ? (
+          {currentUser? (
             <div className="user" onClick={()=>setOpen(!open)}>
               <img
-                src={gig}
+                src={currentUser.img||gig}
                 alt=""
               />
               <span>{currentUser?.username}</span>
@@ -76,14 +85,14 @@ function Navbar() {
                 <Link className="link" to="/messages">
                   Messages
                 </Link>
-                <Link className="link" to="/">
+                <Link className="link"onClick={handlelogout}>
                   Logout
                 </Link>
               </div>}
             </div>
           ) : (
             <>
-              <span>Sign in</span>
+            <Link className="link" to="/login"><span>Sign in</span></Link>
               <Link className="link" to="/register">
                 <button>Join</button>
               </Link>

@@ -9,7 +9,7 @@ const messageRoute=require("./routes/message.js")
 const orderRoute=require("./routes/order.js")
 const authRoute=require("./routes/auth.js")
 const cookieParser = require('cookie-parser');
-
+const cors =require("cors")
 const app=express();
 dotenv.config();
 mongoose.set('strictQuery', true);
@@ -25,6 +25,7 @@ mongoose.connect(process.env.MONGO, {
   });
 app.use(express.json())//first middleware allowing to send json from client side to server
 app.use(cookieParser())//second middleware for cookie for storing jwt token.
+app.use(cors({origin:"http://localhost:5173",credentials:true}))
 app.use((err,req,res,next)=>{
   const errorStatus=err.status||500
   const errorMessage=err.message||"something went wrong"

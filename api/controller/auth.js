@@ -59,11 +59,12 @@ exports.login = [
         }
     }
 ]
-exports.logout=async(req,res)=>{
-    res.clearCookie("acessToken",{
-        sameSite:"none",
-        secure:true,
+exports.logout = async (req, res) => {
+    res.clearCookie("accessToken", {
+        sameSite: "none",
+        secure: true
     })
     .status(200)
-    .send("User has been logged out.")
-}
+    .send("User has been logged out.");
+    console.log("logged out");
+};

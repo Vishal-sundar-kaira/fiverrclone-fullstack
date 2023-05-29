@@ -11,6 +11,8 @@ import React from "react"
 import Footer from "./Components/footer/Footer"
 import {  Outlet, RouterProvider, createBrowserRouter } from "react-router-dom"
 import "./App.scss"
+import Register from "./Pages/register/Register"
+import Login from "./Pages/login/Login"
 function App() {
   const Layout=()=>{
     return(
@@ -58,6 +60,14 @@ function App() {
           path:"/message/:id",
           element:<Message/>
         },
+        {
+          path:"/register",
+          element:<Register/>
+        },
+        {
+          path:"/login",
+          element:<Login/>
+        }
       ]
     }
   ])
