@@ -2,9 +2,10 @@ const User = require("../models/User.js")
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const jwt=require("jsonwebtoken")
+const createError = require("../utils/createError.js")
 exports.register = [
     body("email").isEmail().withMessage("Enter a valid email"),
-    async (req, res) => {
+    async (req, res,next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             // Handle validation errors
@@ -18,15 +19,15 @@ exports.register = [
                 password:secpass
             });
             await newUser.save();
-            res.status(201).send("User has been created");
+            next(createError(201,"User has been created"))
         } catch (err) {
-            res.status(500).send("There is some error");
+            next(err)
         }
     }
 ]
 exports.login = [
     body("password").exists().withMessage("Enter a valid password"),
-    async (req, res) => {
+    async (req, res,next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             // Handle validation errors
@@ -34,12 +35,13 @@ exports.login = [
         }
         try {
             const user=await User.findOne({username:req.body.username})
+
             if(!user)
             {
-                return res.status(400).send("user not found")
+                return next(createError(404,"user not found"))
             }
             const iscorrect=bcrypt.compareSync(req.body.password,user.password)
-            if(!iscorrect) return res.status(400).send("wrong password use correct password")
+            if(!iscorrect) next(createError(400,"Wrong password use correct password"))
             // console.log("1")
             const token=jwt.sign(
             {
@@ -53,7 +55,15 @@ exports.login = [
             }).status(200).send(info)
             // console.log("3")
         } catch (err) {
-            res.status(500).send("There is some error");
+            next(err)
         }
     }
 ]
+exports.logout=async(req,res)=>{
+    res.clearCookie("acessToken",{
+        sameSite:"none",
+        secure:true,
+    })
+    .status(200)
+    .send("User has been logged out.")
+}

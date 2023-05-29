@@ -25,6 +25,11 @@ mongoose.connect(process.env.MONGO, {
   });
 app.use(express.json())//first middleware allowing to send json from client side to server
 app.use(cookieParser())//second middleware for cookie for storing jwt token.
+app.use((err,req,res,next)=>{
+  const errorStatus=err.status||500
+  const errorMessage=err.message||"something went wrong"
+  return res.status(errorStatus).send(errorMessage);
+})
 app.use("/api/user",userRoute);
 app.use("/api/gig",gigRoute);
 app.use("/api/order",orderRoute);

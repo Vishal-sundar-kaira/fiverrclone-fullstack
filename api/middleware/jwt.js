@@ -1,8 +1,9 @@
 
-const jwt=require("jsonwebtoken")
+const jwt=require("jsonwebtoken");
+const createError = require("../utils/createError");
 exports.verifytoken = async (req, res, next) => {
     const token = req.cookies.accessToken;
-    if (!token) return res.status(401).send("You are not authenticated");
+    if (!token) next(401,"you are not authenticated")
   
     try {
       const payload = await jwt.verify(token, process.env.JWT_KEY);
@@ -10,6 +11,6 @@ exports.verifytoken = async (req, res, next) => {
       req.isSeller = payload.isSeller;
       next();
     } catch (err) {
-      return res.status(403).send("Token is not valid");
+      return next(createError(403,"Token is not valid"))
     }
   };
