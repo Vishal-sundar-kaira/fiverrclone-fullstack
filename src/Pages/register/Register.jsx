@@ -3,7 +3,10 @@ import React, { useState } from "react";
 import "./Register.scss";
 // import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
+import newRequest from "../../utils/newRequest";
+import upload  from "../../utils/upload";
 const Register=()=>{
+  const navigate=useNavigate();
   const [file,setfile]=useState(null)
 const [user,setuser]=useState({
       username:"",
@@ -17,7 +20,7 @@ const [user,setuser]=useState({
     })
 const handlechange=(e)=>{
   setuser(prev=>{
-    return {...prev,[e.target.name]:[e.target.value]}
+    return {...prev,[e.target.name]:e.target.value}
   })
 }
 const handleseller=(e)=>{
@@ -25,11 +28,25 @@ const handleseller=(e)=>{
     return {...prev,isSeller:[e.target.checked]}
   })
 }
-console.log(user)
-console.log(file)
+const handlesubmit=async(e)=>{
+  e.preventDefault();
+  const url=await upload(file);
+  try{
+    console.log(user)
+    await newRequest.post("/auth/register",{
+      ...user,
+      img:url
+    })
+    navigate("/")
+  }catch(err){
+    console.log(err)
+  }
+}
+// console.log(user)
+// console.log(file)
   return (
     <div className="register">
-      <form>
+      <form onSubmit={handlesubmit}>
         <div className="left">
           <h1>Create a new account</h1>
           <label htmlFor="">Username</label>

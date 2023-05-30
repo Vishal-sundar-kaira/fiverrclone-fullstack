@@ -1,9 +1,9 @@
-const createError=(status,message)=>{
-    console.log("error")
-    const err=new Error()
-    err.status=status
-    err.message=message
-
-    return err;
-}
-module.exports = createError;
+const createError = (statusCode, message) => {
+    const error = new Error();
+    error.statusCode = statusCode;
+    error.message = message;
+  
+    return error;
+  };
+  
+  module.exports = createError;

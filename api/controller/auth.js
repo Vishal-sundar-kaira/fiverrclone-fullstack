@@ -12,14 +12,15 @@ exports.register = [
             return res.status(400).json({ errors: errors.array() });
         }
         try {
-            const salt=await bcrypt.genSalt(10);
-            const secpass=await bcrypt.hashSync(req.body.password,salt);
+            console.log(req.body.password)
+            const salt = await bcrypt.genSalt(10); // 10 represents the number of rounds
+            const secpass = await bcrypt.hash(req.body.password, salt);
             const newUser = new User({
                 ...req.body,
                 password:secpass
             });
             await newUser.save();
-            next(createError(201,"User has been created"))
+            res.status(201).send("user has been created")
         } catch (err) {
             next(err)
         }
@@ -38,7 +39,7 @@ exports.login = [
 
             if(!user)
             {
-                return next(createError(404,"user not found"))
+                return next(createError(404, "user not found"))
             }
             const iscorrect=bcrypt.compareSync(req.body.password,user.password)
             if(!iscorrect) next(createError(400,"Wrong password use correct password"))
