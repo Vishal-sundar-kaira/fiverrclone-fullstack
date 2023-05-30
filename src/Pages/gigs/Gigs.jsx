@@ -42,11 +42,15 @@ const Gigs = () => {
     refetch();
   }
   const {isLoading,error,data,refetch}=useQuery({
-    queryKey:['repoData'],
-    queryFn:()=>newRequest.get(`/gig${search}${minRef.current.value? `&min=${minRef.current.value}` : ''}${maxRef.current.value? `&max=${maxRef.current.value}` : ''}`).then(res=>{
+    queryKey:['gig'],
+    queryFn:()=>newRequest.get(`/gig${search}${minRef.current.value? `&min=${minRef.current.value}` : ''}${maxRef.current.value? `&max=${maxRef.current.value}` : ''}&sort=${cat}`).then(res=>{
       return res.data
     })
   })
+  useEffect(() => {
+    refetch()
+  }, [cat])
+  
   // console.log(data)
   return (
     <div className='Gigs'>
@@ -68,7 +72,7 @@ const Gigs = () => {
             <img src={down} alt="" onClick={handleclick}/>
           </div>
           {menu==true?(<div className="rightmenu">
-              <span onClick={() => change("Newest")}>Newest</span>
+              <span onClick={() => change("createdAt")}>Newest</span>
               <span onClick={() => change("BestSelling")}>Best Selling</span>
             </div>):""}
           </div>
