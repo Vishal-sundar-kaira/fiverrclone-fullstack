@@ -1,13 +1,20 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect,useRef } from 'react'
 import "./Gigs.scss"
-import { gigs } from "../../data";
 import GigCard from '../../Components/gigCard/GigCard';
 import down from "../../images/check.png"
 import Aos from "aos"
 import "aos/dist/aos.css"
+import { useQuery,useQueryClient } from '@tanstack/react-query';
+import newRequest from '../../utils/newRequest';
+import { useLocation } from 'react-router-dom';
 const Gigs = () => {
+  const queryClient = useQueryClient()
   const [menu,setmenu]=useState(false)
   const [cat,setcat]=useState("Bestselling")
+  const minRef = useRef();
+  const maxRef = useRef();
+  const {search}=useLocation()
+  // console.log(location)
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -31,9 +38,16 @@ const Gigs = () => {
       setmenu(true)
     }
   }
-  useEffect(()=>{
-
-  },[menu])
+  const apply=()=>{
+    refetch();
+  }
+  const {isLoading,error,data,refetch}=useQuery({
+    queryKey:['repoData'],
+    queryFn:()=>newRequest.get(`/gig${search}${minRef.current.value? `&min=${minRef.current.value}` : ''}${maxRef.current.value? `&max=${maxRef.current.value}` : ''}`).then(res=>{
+      return res.data
+    })
+  })
+  // console.log(data)
   return (
     <div className='Gigs'>
       <div data-aos="fade-down" className="container">
@@ -43,9 +57,9 @@ const Gigs = () => {
         <div className="menu">
           <div className="left">
             <span>Budget</span>
-            <input type="text" placeholder='min' />
-            <input type="text" placeholder='max' />
-            <button>Apply</button>
+            <input  ref={minRef} type="text" placeholder='min' />
+            <input ref={maxRef} type="text" placeholder='max' />
+            <button onClick={apply}>Apply</button>
           </div>
           <div className="rightmen">
           <div data-aos="zoom-in" className="right">
@@ -61,8 +75,8 @@ const Gigs = () => {
         </div>
       </div>
           <div className="cards">
-          {gigs.map((gig) => (
-            <GigCard key={gig.id} item={gig} />
+          {isLoading?"loading":error?"something went wrong":data.map((gig) => (
+            <GigCard key={gig._id} item={gig} />
           ))}
         </div>
     </div>

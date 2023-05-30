@@ -53,14 +53,14 @@ const handlesubmit=async(e)=>{
           <input
             name="username"
             type="text"
-            placeholder="johndoe"
+            placeholder="vishal"
             onChange={handlechange}
           />
           <label htmlFor="">Email</label>
           <input
             name="email"
             type="email"
-            placeholder="email"
+            placeholder="name@gmail.com"
             onChange={handlechange}
           />
           <label htmlFor="">Password</label>
@@ -71,7 +71,7 @@ const handlesubmit=async(e)=>{
           <input
             name="country"
             type="text"
-            placeholder="Usa"
+            placeholder="India"
             onChange={handlechange}
           />
           <button type="submit">Register</button>
@@ -89,7 +89,7 @@ const handlesubmit=async(e)=>{
           <input
             name="phone"
             type="text"
-            placeholder="+1 234 567 89"
+            placeholder="+91 123 456 789 1"
             onChange={handlechange}
           />
           <label htmlFor="">Description</label>
