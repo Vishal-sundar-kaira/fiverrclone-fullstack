@@ -14,11 +14,12 @@ const GigSchema=new Schema({
         required:true
     },
     totalStars:{
-        type:String
+        type:String,
+        default:0
     },
     starNumber:{
         type:String,
-        required:true
+        default:0
     },
     cat:{
         type:String,

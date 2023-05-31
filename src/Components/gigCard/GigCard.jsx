@@ -4,27 +4,40 @@ import gig1 from "../../images/gig1.jpg"
 import sample from "../../images/newimg.webp"
 import heart from "../../images/heart.png"
 import star from "../../images/star.png"
-import gigimg from "../../images/gigimg.webp"
+import nouser from "../../images/nouser.png"
 import { Link } from 'react-router-dom'
 import Aos from "aos"
 import "aos/dist/aos.css"
+import { useQuery } from '@tanstack/react-query'
+import newRequest from '../../utils/newRequest'
 const GigCard = ({item}) => {
     useEffect(()=>{
         Aos.init({duration:1000,offset:0});
       },[])
+
+      const {isLoading,error,data}=useQuery({
+        queryKey:[`${item.userid}`],
+        queryFn:()=>newRequest.get(`/user/${item.userid}`).then(res=>{
+          return res.data
+        })
+      })
+      // useEffect(() => {
+      //   refetch()
+      // }, [])
+
   return (
                 <Link className='link' to="/gig/123">
                 <div data-aos="zoom-in" className="maincard">
-                    <img className='img' src={item.img} alt="" />
+                    <img className='img' src={item.cover} alt="" />
                     <div className="cardright">
-                    <div className="name">
-                        <img src={item.pp} alt="" />
-                        <h2>arpitdk123</h2>
-                    </div>
+                    {isLoading?"loading":error?"something went wrong":<div className="name">
+                        <img src={data.img||nouser} alt="" />
+                        <h2>{data.username}</h2>
+                    </div>}
                     <p>{item.desc}</p>
                     <div className="star">
                         <img src={star} alt="" />
-                        <h2>{item.star}</h2>
+                        <h2>{!isNaN(item.totalStars/item.starNumber)&&Math.round(item.totalStars/item.starNumber)}</h2>
                     </div>
                     <hr/>
                     <div className="status">

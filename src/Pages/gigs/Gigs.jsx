@@ -73,7 +73,7 @@ const Gigs = () => {
           </div>
           {menu==true?(<div className="rightmenu">
               <span onClick={() => change("createdAt")}>Newest</span>
-              <span onClick={() => change("BestSelling")}>Best Selling</span>
+              <span onClick={() => change("sale")}>Best Selling</span>
             </div>):""}
           </div>
         </div>
