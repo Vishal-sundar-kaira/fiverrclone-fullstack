@@ -26,7 +26,7 @@ const GigCard = ({item}) => {
       // }, [])
 
   return (
-                <Link className='link' to="/gig/123">
+                <Link className='link' to={`/gig/${item._id}`}>
                 <div data-aos="zoom-in" className="maincard">
                     <img className='img' src={item.cover} alt="" />
                     <div className="cardright">
