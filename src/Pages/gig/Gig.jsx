@@ -22,10 +22,11 @@ const Gig = () => {
   },[])
   const {id}=useParams();
   // console.log(id)
+  
   const {isLoading,error,data}=useQuery({
     queryKey:['gig'],
     queryFn:()=>newRequest.get(`/gig/single/${id}`).then(res=>{
-      console.log(res.data.userid)
+      // console.log(res.data.userid)
       return res.data
     })
   })
@@ -39,7 +40,7 @@ const Gig = () => {
   // console.log(data.title)
   return (
     <div className='gig'>
-      {isLoading?("Loading"):error?("something went wrong"):(<><div className="gigcontainer">
+      {isLoading?("Loading"):error?("something went wrong"):(data&&<><div className="gigcontainer">
         <div className="left">
         <span data-aos="fade-down" className="breadcrumbs">FIVERR and GRAPHICS & DESIGN </span>
         <h1 data-aos="fade-left">{data.title}</h1>
@@ -131,7 +132,7 @@ const Gig = () => {
               </div>
             </div>
             <div className="work">
-                {data.features.map((feature)=>(
+                {data&&data.features.map((feature)=>(
                     <div className="line" key={feature}>
                     <img src={checkk} alt="" />
                     <h3>{feature}</h3>

@@ -1,6 +1,9 @@
 const express=require("express")
 const router=express.Router();
-const { deleteuser } = require("../controller/user.js");
-router.get("/test",deleteuser)
+const{verifytoken}=require("../middleware/jwt.js")
+const { createReview,getReviews,deleteReview } = require("../controller/review.js");
+router.post("/",verifytoken,createReview);
+router.get("/:id",getReviews);
+router.post("/delete/:id",verifytoken,deleteReview);
 
 module.exports = router;
