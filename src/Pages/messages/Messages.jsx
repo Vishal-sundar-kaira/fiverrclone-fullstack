@@ -5,22 +5,29 @@ import message from "../../images/message.png"
 import flag from "../../images/flag.png"
 import Aos from "aos"
 import "aos/dist/aos.css"
+import newRequest from '../../utils/newRequest';
+import moment from "moment"
+import { useQuery } from '@tanstack/react-query'
 const Messages = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const currentUser={
-    id:1,
-    name:"vishal",
-    isSeller:true
-}
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"))
+const {isLoading,error,data}=useQuery({
+  queryKey:['conversation'],
+  queryFn:()=>newRequest.get(`/conversation`).then(res=>{
+    // console.log(res.data.userid)
+    return res.data
+  })
+})
 useEffect(()=>{
   Aos.init({duration:2000});
 },[])
 const message="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit veritatis sed dolores quis iure ratione beatae dolorem" 
   return (
     <div className='Messages'>
-      <div className="container">
+      {isLoading?"Loading":(error?"error":(
+        <div className="container">
         <div data-aos="fade-down" className="title">
           <h1>Messages</h1>
         </div>
@@ -31,47 +38,21 @@ const message="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit
             <th data-aos="fade-left">Date</th>
             <th data-aos="fade-left">Action</th>
           </tr>
-          <tr data-aos="flip-up" className='active'>
-            <td>
-              <h3>Vishal</h3>
-            </td>
-            <td><Link to="/message/123"className='link'>{message.substring(0,80)}....</Link></td>
-            <td>1 day ago</td>
-            <td><button>Mark as read</button></td>
-            {/* delete */}
-          </tr>
-          <tr data-aos="flip-up" className='active'>
-            <td>
-              <h3>Vishal</h3>
-            </td>
-            <td><Link to="/message/123"className='link'>{message.substring(0,80)}....</Link></td>
-            <td>1 day ago</td>
-            <td><button>Mark as read</button></td>
-            {/* delete */}
-          </tr>
-          <tr data-aos="flip-up">
-            <td>
-              <h3>Vishal</h3>
-            </td>
-            <td><Link to="/message/123"className='link'>{message.substring(0,80)}....</Link></td>
-            <td>1 day ago</td>
-          </tr>
-          <tr data-aos="flip-up">
-            <td>
-              <h3>Vishal</h3>
-            </td>
-            <td><Link to="/message/123"className='link'>{message.substring(0,80)}....</Link></td>
-            <td>1 day ago</td>
-          </tr>
-          <tr data-aos="flip-up">
-            <td>
-              <h3>Vishal</h3>
-            </td>
-            <td><Link to="/message/123"className='link'>{message.substring(0,80)}....</Link></td>
-            <td>1 day ago</td>
-          </tr>
+          {data.map((c)=>{
+            return(
+              <tr data-aos="flip-up" className='active' key={c.id}>
+              <td>
+                <h3>{currentUser.isSeller?c.buyerid:sellerid}</h3>
+              </td>
+              <td><Link to="/message/123"className='link'>{c?.lastmessage?.substring(0,80)}....</Link></td>
+              <td>{moment(c.updatedAt).fromNow()} </td>
+              <td><button>Mark as read</button></td>
+              {/* delete */}
+            </tr>
+            )
+          })}
         </table>
-      </div>
+      </div>))}
     </div>
   )
 }

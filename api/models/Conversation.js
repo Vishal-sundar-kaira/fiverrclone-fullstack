@@ -18,6 +18,10 @@ const ConversationSchema=new Schema({
         type:String,
         required:true
     },
+    Readbybuyer:{
+        type:String,
+        requrired:true
+    },
     lastmessage:{
         type:String,
         required:false

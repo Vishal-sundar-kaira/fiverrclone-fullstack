@@ -5,6 +5,7 @@ import message from "../../images/message.png"
 import flag from "../../images/flag.png"
 import Aos from "aos"
 import "aos/dist/aos.css"
+import newRequest from '../../utils/newRequest';
 import { useQuery } from '@tanstack/react-query'
 const Orders = () => {
   useEffect(() => {
@@ -31,7 +32,7 @@ useEffect(()=>{
         </div>
         <table>
           <tr data-aos="fade-down">
-            <th><Image></Image></th>
+            <th>Image</th>
             <th>Title</th>
             <th>Price</th>
             <th>{currentUser?.isSeller?"Seller":"Buyer"}</th>
@@ -41,11 +42,11 @@ useEffect(()=>{
             data.map(order=>{
               return(<tr key={order._id} data-aos="flip-up">
             <td>
-              <img className='image' src={order.img?order.img:flag} alt="" />
+              <img className='image' src={order.img||flag} alt="" />
             </td>
             <td>{order.title}</td>
             <td>{order.price}</td>
-            <td>{order.sellerid}</td>
+            {/* <td>{order.sellerid}</td> */}
             <td><img src={message} alt="" /></td>
           </tr>)
             })
