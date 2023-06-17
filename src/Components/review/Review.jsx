@@ -5,22 +5,25 @@ import dislike from "../../images/dislike.png"
 import flag from "../../images/flag.png"
 import profile from "../../images/profile.webp"
 import star from "../../images/star.png"
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
+import nouser from "../../images/nouser.png"
 import newRequest from '../../utils/newRequest'
 const Review = ({review}) => {
   const {isLoading,error,data}=useQuery({
-    queryKey:['reviews'],
-    queryFn:()=>newRequest.get(`/user/${review.userid}`).then(res=>{
+    queryKey:[review.userid],
+    queryFn:()=>newRequest.get(`/user/${review.userid}`).then((res)=>{
       // console.log(res.data,"done")
       return res.data
     })
   })
+
+
   return (
     <>
     {isLoading?"Loading":(error?"There is some error":(
        <div className="rev">
        <div className="person">
-         <img src={profile} alt="" />
+         <img src={data.img?data.img:nouser} alt="" />
          <div className="nameloc">
            <h3>{data.username}</h3>
            <div className="country">

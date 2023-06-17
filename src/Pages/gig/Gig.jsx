@@ -2,7 +2,7 @@ import React,{useEffect} from 'react'
 import "./Gig.scss"
 import star from "../../images/star.png"
 import projimg from "../../images/projimg.webp"
-
+import nouser from "../../images/nouser.png"
 import recycle from "../../images/recycle.png"
 import clock from "../../images/clock.png"
 import checkk from "../../images/checkk.png"
@@ -45,7 +45,7 @@ const Gig = () => {
         <span data-aos="fade-down" className="breadcrumbs">FIVERR and GRAPHICS & DESIGN </span>
         <h1 data-aos="fade-left">{data.title}</h1>
         {isLoadingUser?"Loadinguser":error?"something went wrong":(<div data-aos="fade-left" className="name">
-          <img className="img1" src={dataUser.img} alt="" />
+          <img className="img1" src={dataUser.img?dataUser.img:nouser} alt="" />
           <div className="username">{dataUser.username}</div>
           {!isNaN(data.totalStars/data.starNumber)&&(
             <div className="stars">
@@ -61,7 +61,7 @@ const Gig = () => {
         <div data-aos="fade-right" className="imgcontain">
         <Slider slidesToShow={1} arrowsScroll={1}>
           {data.images.map((img)=>{
-            return <img key={img||projimg} src={img} alt='cant find image'></img>
+            return <img key={img} src={projimg} alt='cant find image'/>
           })}
       </Slider>
         </div>
@@ -73,7 +73,7 @@ const Gig = () => {
      data-aos-anchor-placement="center-bottom" className="seller">
             <h2>About The Seller</h2>
             <div className="info2">
-              <img className="userimg" src={dataUser.img} alt="" />
+              <img className="userimg" src={dataUser.img?dataUser.img:nouser} alt="" />
               <div className="name2">
                 <h3>{dataUser.username}</h3>
                 {!isNaN(data.totalStars/data.starNumber)&&(
