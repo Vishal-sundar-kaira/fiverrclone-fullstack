@@ -41,8 +41,7 @@ exports.updateConversation = async(req, res, next) => {
     try{
         const updatedconversation=await Conversation.findOneAndUpdate({id:req.params.id},{
             $set:{
-                Readbyseller:req.isSeller,
-                Readbybuyer:!req.isSeller
+                ...(req.isSeller?{Readbyseller:true}:{Readbybuyer:true}),
             }
         },{new:true})//compulsary to return updated conversations.
         res.status(200).send(updatedconversation);

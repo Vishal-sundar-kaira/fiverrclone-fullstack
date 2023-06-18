@@ -31,6 +31,7 @@ useEffect(()=>{
           <h1>Orders</h1>
         </div>
         <table>
+          <thead>
           <tr data-aos="fade-down">
             <th>Image</th>
             <th>Title</th>
@@ -38,6 +39,8 @@ useEffect(()=>{
             <th>{currentUser?.isSeller?"Seller":"Buyer"}</th>
             <th>Contact</th>
           </tr>
+          </thead>
+          <tbody>
           {
             data.map(order=>{
               return(<tr key={order._id} data-aos="flip-up">
@@ -46,11 +49,12 @@ useEffect(()=>{
             </td>
             <td>{order.title}</td>
             <td>{order.price}</td>
-            {/* <td>{order.sellerid}</td> */}
+           <td>{currentUser?.isSeller?order.sellerid:order.buyerid}</td> 
             <td><img src={message} alt="" /></td>
           </tr>)
             })
           }
+          </tbody>
         </table>
       </div>))}
     </div>

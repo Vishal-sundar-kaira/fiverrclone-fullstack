@@ -4,5 +4,6 @@ const { getConversations,createConversation,getSingleConversation,updateConversa
 const{verifytoken}=require("../middleware/jwt.js")
 router.get("/",verifytoken,getConversations)
 router.post("/",verifytoken,createConversation)
-router.put("/single/:id",verifytoken,getSingleConversation)
+router.get("/single/:id",verifytoken,getSingleConversation)
+router.put("/:id",verifytoken,updateConversation)
 module.exports = router;

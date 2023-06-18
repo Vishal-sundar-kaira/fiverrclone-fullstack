@@ -34,7 +34,7 @@ const Review = ({review}) => {
        </div>
        <div className="stars">
        {Array(review.star).fill().map((item,i)=>(
-           <img src={star}  alt=""/>
+           <img src={star} key={i}  alt=""/>
        ))}
        </div>
        <div className="reviewpara">

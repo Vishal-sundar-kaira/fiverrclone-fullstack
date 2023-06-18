@@ -7,7 +7,7 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import newRequest from '../../utils/newRequest';
 import moment from "moment"
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 const Messages = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,6 +20,18 @@ const {isLoading,error,data}=useQuery({
     return res.data
   })
 })
+const queryClient=useQueryClient();
+const mutation = useMutation({
+  mutationFn: (id) => {
+    return newRequest.put(`/conversation/${id}`)
+  },
+  onSuccess:()=>{
+    queryClient.invalidateQueries("conversation")//point toward querykey of other whom you want to refresh.
+  }
+})
+const handleread=(id)=>{
+  mutation.mutate(id)
+}
 useEffect(()=>{
   Aos.init({duration:2000});
 },[])
@@ -32,25 +44,32 @@ const message="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit
           <h1>Messages</h1>
         </div>
         <table>
+          <thead>
           <tr>
             <th data-aos="fade-right">Buyer</th>
             <th data-aos="fade-right">Last Message</th>
             <th data-aos="fade-left">Date</th>
             <th data-aos="fade-left">Action</th>
           </tr>
+          </thead>
+          <tbody>
           {data.map((c)=>{
             return(
               <tr data-aos="flip-up" className='active' key={c.id}>
               <td>
-                <h3>{currentUser.isSeller?c.buyerid:sellerid}</h3>
+                <h3>{currentUser.isSeller?c.buyerid:c.sellerid}</h3>
               </td>
               <td><Link to="/message/123"className='link'>{c?.lastmessage?.substring(0,80)}....</Link></td>
               <td>{moment(c.updatedAt).fromNow()} </td>
-              <td><button>Mark as read</button></td>
+              <td>
+                {((currentUser.isSeller&&!c.Readbyseller)||(!currentUser.isSeller&&c.Readbybuyer))
+                &&(<button onClick={()=>handleread(c.id)}>Mark as read</button>)}
+              </td>
               {/* delete */}
             </tr>
             )
           })}
+          </tbody>
         </table>
       </div>))}
     </div>
