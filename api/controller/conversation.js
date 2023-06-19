@@ -7,7 +7,7 @@ exports.createConversation = async(req, res, next) => {
         const newConversation=new Conversation({
             id:req.isSeller?req.userId+req.body.to:req.body.to+req.userId,
             sellerid:req.isSeller?req.userId:req.body.to,
-            buyerid:req.seller?req.body.to:req.userId,
+            buyerid:req.isSeller?req.body.to:req.userId,
             Readbyseller:req.isSeller,
             Readbybuyer:!req.isSeller,
 
@@ -30,8 +30,8 @@ exports.getSingleConversation = async(req, res, next) => {
 };
 exports.getConversations = async(req, res, next) => {
     try{
-        const conversations=await Conversation.find(req.isSeller?{sellerid:req.userId}:{buyerId:req.userId})
-
+        const conversations=await Conversation.find(req.isSeller?{sellerid:req.userId}:{buyerid:req.userId})
+        console.log(conversations.buyerid,req.userId)
         res.status(200).send(conversations);
     }catch(err){
         next(err)

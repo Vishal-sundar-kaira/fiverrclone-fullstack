@@ -46,7 +46,7 @@ const message="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit
         <table>
           <thead>
           <tr>
-            <th data-aos="fade-right">Buyer</th>
+            <th data-aos="fade-right">{currentUser.isSeller?"Buyer":"Seller"}</th>
             <th data-aos="fade-right">Last Message</th>
             <th data-aos="fade-left">Date</th>
             <th data-aos="fade-left">Action</th>
@@ -59,11 +59,12 @@ const message="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit
               <td>
                 <h3>{currentUser.isSeller?c.buyerid:c.sellerid}</h3>
               </td>
-              <td><Link to="/message/123"className='link'>{c?.lastmessage?.substring(0,80)}....</Link></td>
+              <td><Link to={`/message/${c.id}`}className='link'>{c?.lastmessage?.substring(0,80)}....</Link></td>
               <td>{moment(c.updatedAt).fromNow()} </td>
               <td>
-                {((currentUser.isSeller&&!c.Readbyseller)||(!currentUser.isSeller&&c.Readbybuyer))
-                &&(<button onClick={()=>handleread(c.id)}>Mark as read</button>)}
+              {(currentUser.isSeller && c.Readbyseller=="false") || (!currentUser.isSeller && c.Readbybuyer=="false") && (
+  <button onClick={() => handleread(c.id)}>Mark as read</button>
+)}
               </td>
               {/* delete */}
             </tr>

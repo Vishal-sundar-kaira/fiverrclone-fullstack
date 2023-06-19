@@ -1,6 +1,8 @@
 const express=require("express")
 const router=express.Router();
-const { deleteuser } = require("../controller/user.js");
-router.get("/test",deleteuser)
+const { createmessage,getmessage } = require("../controller/message.js");
+const{verifytoken}=require("../middleware/jwt.js")
+router.post("/",verifytoken,createmessage)
+router.get("/:id",verifytoken,getmessage)
 
 module.exports = router;
