@@ -1,12 +1,12 @@
 import React, { useState,useEffect } from 'react'
 import "./Orders.scss"
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import message from "../../images/message.png"
 import flag from "../../images/flag.png"
 import Aos from "aos"
 import "aos/dist/aos.css"
 import newRequest from '../../utils/newRequest';
-import { useQuery } from '@tanstack/react-query'
+import { QueryClient, useMutation, useQuery } from '@tanstack/react-query'
 const Orders = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -19,7 +19,32 @@ const Orders = () => {
       return res.data
     })
   })
+  const navigate=useNavigate();
+  const mutation = useMutation({
+    mutationFn: () => {
+      return newRequest.post(`/conversation`)
+    },
+    onSuccess:()=>{
+      QueryClient.invalidateQueries("conversation")//point toward querykey of other whom you want to refresh.
+    }
+  })
+const handlecontact=async(order)=>{
+  const sellerid=order.sellerid
+  const buyerid=order.buyerid
+  const id=buyerid+sellerid
 
+  try{
+    const res=await newRequest.get(`/conversation/single/${id}`)
+    navigate(`/message/${res.data.id}`);
+  }catch(err){
+    if(err.response.status===404){
+      const res=await newRequest.post(`/conversation`,{
+        to:currentUser.isSeller?buyerid:sellerid,
+      });
+      navigate(`/message/${res.data.id}`);
+    }
+  }
+}
 useEffect(()=>{
   Aos.init({duration:2000});
 },[])
@@ -36,7 +61,7 @@ useEffect(()=>{
             <th>Image</th>
             <th>Title</th>
             <th>Price</th>
-            <th>{currentUser?.isSeller?"Seller":"Buyer"}</th>
+            <th>{currentUser?.isSeller?"Buyer":"Seller"}</th>
             <th>Contact</th>
           </tr>
           </thead>
@@ -49,8 +74,8 @@ useEffect(()=>{
             </td>
             <td>{order.title}</td>
             <td>{order.price}</td>
-           <td>{currentUser?.isSeller?order.sellerid:order.buyerid}</td> 
-            <td><img src={message} alt="" /></td>
+           <td>{currentUser?.isSeller?order.buyerid:order.sellerid}</td> 
+            <td><img src={message} onClick={()=>{handlecontact(order)}} alt="" /></td>
           </tr>)
             })
           }

@@ -46,18 +46,20 @@ const Message = () => {
         <span data-aos="fade-right" className="breadcrumbs">
           <Link to="/messages">MESSAGES</Link> Vishal Kaira
         </span>
+        <div className="messages">
         {isLoading?"Loading":error?"error":(
         data.map((m)=>{
-          return (<div className="messages" key={m._id}>
-          <div data-aos="fade-right" className={m.Userid===currentUser._id?"mess":"mess owner"}>
+          return (
+          <div   key={m._id} className={m.Userid===currentUser._id?"mess":"mess owner" }>
             <img src={profile} alt="" />
             <div className="chat">
               <p>{m.desc}</p>
             </div>
           </div>
-        </div>)
+        )
         })
 )}
+</div>
         <hr />
         <form className="write" onSubmit={handlesubmit}>
           <textarea name="" id="" cols="30" rows="10" placeholder='Write your message'></textarea>
