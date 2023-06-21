@@ -8,7 +8,7 @@ import clock from "../../images/clock.png"
 import checkk from "../../images/checkk.png"
 import Aos from "aos"
 import "aos/dist/aos.css"
-import { useParams } from 'react-router-dom'
+import { useParams,Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import newRequest from '../../utils/newRequest'
 import Slider from '../../Components/slider/Slider'
@@ -139,7 +139,9 @@ const Gig = () => {
                   </div>
                 ))}
             </div>
+            <Link to={`/pay/${id}`}>
             <button>Continue</button>
+            </Link>
           </div>
         </div>
         </div></>)}
