@@ -3,17 +3,16 @@ const Gig=require("../models/Gig.js")
 const Order=require("../models/Order.js")
 const Stripe = require("stripe")
 exports.intent = async(req, res, next) => {
+    console.log("ok so its inside intent")
     try{
-        const stripe=new Stripe(process.env.STRIPE)
-        const gig=Gig.findById(req.params.id)
-        const paymentIntent = await stripe.paymentIntents.create({
-            amount: gig.price*100,
-            currency: "inr",
-            automatic_payment_methods: {
-              enabled: true,
-            },
-        })
-        //after payment create order.
+        // const stripe=new Stripe(process.env.STRIPE)
+        const gig=await Gig.findById(req.params.id)
+        const alreadyorder=await Order.find({gigid:gig._id,buyerid:req.userId})
+        console.log(alreadyorder)
+        if(alreadyorder===null){
+            return next(createError(400,"Already same gig ordered"))
+        }
+        // console.log(stripe,"ok stripe is working")
         const neworder=new Order({
             gigid:gig._id,
             buyerid:req.userId,
@@ -21,13 +20,28 @@ exports.intent = async(req, res, next) => {
             img:gig.cover,
             title:gig.title,
             price:gig.price,
-            payement_intent:paymentIntent.id
+            iscompleted:true,
+            payement_intent:"Temporary"//paymentIntent.id
 
         })
         await neworder.save();
-        res.status(200).send({
-            clientSecret:paymentIntent.client_secret,
-        })
+        console.log("order confirmed")
+        res.status(200).send("Success")
+        // const paymentIntent = await stripe.paymentIntents.create({
+        //     amount: gig.price,
+        //     currency: "inr",
+        //     automatic_payment_methods: {
+        //       enabled: true,
+        //     },
+        //   });
+        
+
+        // console.log(paymentIntent,"payementIntent is working")
+        // //after payment create order.
+        // console.log(paymentIntent.client_secret,"clientsecret is correct")
+        // res.status(200).send({
+        //     clientSecret: paymentIntent.client_secret,
+        //   });
     }catch(err){
 
         next(err)
@@ -35,6 +49,7 @@ exports.intent = async(req, res, next) => {
 };
 exports.getOrders = async (req, res ,next) => {
     try{
+        console.log("buy")
         //so we need to search on the basis of if i am seller or buyer
         const orders=await Order.find({
             ...(req.isSeller?{sellerid:req.userId}:{buyerid:req.userId}),

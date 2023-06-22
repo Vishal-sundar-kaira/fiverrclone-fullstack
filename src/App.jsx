@@ -20,7 +20,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-import Pay from "./Pages/pay/Pay"
+import Pay from "./Pages/pay/Pay.jsx"
 import Success from "./Pages/success/Success"
 function App() {
   const queryClient = new QueryClient()

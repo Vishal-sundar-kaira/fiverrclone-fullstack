@@ -31,7 +31,8 @@ const Orders = () => {
 const handlecontact=async(order)=>{
   const sellerid=order.sellerid
   const buyerid=order.buyerid
-  const id=buyerid+sellerid
+  const id=sellerid+buyerid
+  console.log(id)
 
   try{
     const res=await newRequest.get(`/conversation/single/${id}`)

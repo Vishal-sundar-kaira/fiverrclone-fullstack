@@ -8,8 +8,8 @@ import clock from "../../images/clock.png"
 import checkk from "../../images/checkk.png"
 import Aos from "aos"
 import "aos/dist/aos.css"
-import { useParams,Link } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
+import { useParams,Link, useNavigate } from 'react-router-dom'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import newRequest from '../../utils/newRequest'
 import Slider from '../../Components/slider/Slider'
 import Reviews from '../../Components/reviews/Reviews'
@@ -17,12 +17,23 @@ const Gig = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const navigate=useNavigate();
   useEffect(()=>{
     Aos.init({duration:1000});
   },[])
   const {id}=useParams();
   // console.log(id)
-  
+  const mutation = useMutation({
+    mutationFn: () => {
+      return newRequest.post(`/order/${id}`)
+    },
+    onSuccess:()=>{
+      navigate("/orders")
+    }
+  })
+  const handlepayment=()=>{
+    mutation.mutate();
+  }
   const {isLoading,error,data}=useQuery({
     queryKey:['gig'],
     queryFn:()=>newRequest.get(`/gig/single/${id}`).then(res=>{
@@ -35,12 +46,17 @@ const Gig = () => {
     queryFn:()=>newRequest.get(`/user/${data?.userid}`).then(res=>{
       return res.data
     }),
-    enabled:!!data//run only when data value is enabled or ready.
+    enabled:!!data,//run only when data value is enabled or ready.
+    waitFor: data
   })
   // console.log(data.title)
   return (
     <div className='gig'>
-      {isLoading?("Loading"):error?("something went wrong"):(data&&<><div className="gigcontainer">
+       {isLoading ? (
+        "Loading"
+      ) : error ? (
+        "Something went wrong"
+      ) : data ? (<><div className="gigcontainer">
         <div className="left">
         <span data-aos="fade-down" className="breadcrumbs">FIVERR and GRAPHICS & DESIGN </span>
         <h1 data-aos="fade-left">{data.title}</h1>
@@ -139,12 +155,10 @@ const Gig = () => {
                   </div>
                 ))}
             </div>
-            <Link to={`/pay/${id}`}>
-            <button>Continue</button>
-            </Link>
+            <button onClick={handlepayment}>Continue</button>
           </div>
         </div>
-        </div></>)}
+        </div></>) : null}
     </div>
   )
 }
