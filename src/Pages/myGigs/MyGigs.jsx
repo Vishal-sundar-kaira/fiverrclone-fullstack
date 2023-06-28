@@ -19,7 +19,7 @@ const myGigs = () => {
   //to get mygigs
   const {isLoading,error,data}=useQuery({
     queryKey:["myGigs"],
-    queryFn:()=>newRequest.get(`/gig?userid=${currentUser.id}`).then(res=>{
+    queryFn:()=>newRequest.get(`/gig?userid=${currentUser._id}`).then(res=>{
       return res.data
     })
   })
@@ -36,12 +36,14 @@ const myGigs = () => {
   }
   return (
     <div className='MyGigs'>
-     { isLoading?"Loading":error?"Error":(<div className="container">
+    <div className="container">
+
         <div data-aos="fade-down" className="title">
           <h1>Gigs</h1>
           <Link to="/add"><button>Add New Gig</button></Link>
         </div>
         <table>
+          <tbody>
           <tr data-aos="fade-down" >
             <th >Image</th>
             <th>Title</th>
@@ -49,8 +51,9 @@ const myGigs = () => {
             <th>Sales</th>
             <th>Action</th>
           </tr>
-          {
-            data.map(gig=>{
+          {isLoading?"Loading":error?"error":(data.map(gig=>{
+            {console.log(gig)}
+            return(
               <tr data-aos="flip-up" key={gig.id}>
               <td>
                 <img className='image' src={gig.cover} alt="" />
@@ -61,11 +64,12 @@ const myGigs = () => {
               <td><img src={del} alt="" onClick={()=>{handledelete(gig._id)}} /></td>
               {/* delete */}
             </tr>
-            })
+          )}))
           }
           
+          </tbody>
         </table>
-      </div>)}
+      </div>
     </div>
   )
 }

@@ -7,6 +7,7 @@ exports.createGig = async(req, res,next) => {
         ...req.body,
     }) 
     try{
+        console.log(newGig);
         const savedGig=await newGig.save()
         res.status(201).json(savedGig)
     }catch(err){
@@ -38,10 +39,11 @@ exports.getGigs = async(req, res,next) => {
         ...(q.cat&&{cat:q.cat}),//it means if q.cat is present then spread and allow cat but if not present q.cat then leave it.
         ...((q.min||q.max)&&{price:{...(q.min&&{$gt:q.min}),...(q.max&&{$lt:q.max})}}),
         ...(q.search&&{title:{$regex:q.search,$options:"i"}}),//option i is for case sensitive it will not be case sesitive now.
-        ...(q.userid&&{userid:q.useid})
+        ...(q.userid&&{userid:q.userid})
     }
     try{
         const gigs=await Gig.find(filters).sort({[q.sort]:-1})
+        console.log(gigs)
         res.status(200).send(gigs)
     }catch(err){
         next(err)

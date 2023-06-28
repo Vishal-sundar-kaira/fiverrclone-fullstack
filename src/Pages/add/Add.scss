@@ -36,6 +36,7 @@
                     width: 100%;
                     height: 35px;
                     padding: 10px;
+                    margin-bottom: 10px;
                     font-size: 18px;
                 }
                 select{
@@ -55,9 +56,20 @@
                     padding: 10px;
                     font-size: 18px;
                 }
+                .addedfeatures{
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    .item{
+                        color: white;
+                        margin-right: 15px;
+                    }
+                }
                 button{
-                    width: 100px;
-                    height: 40px;
+                    width: fit-content;
+                    height: fit-content;
+                    padding: 10px;
                     font-size: 20px;
                     color: white;
                     background-color: rgb(4, 172, 4);

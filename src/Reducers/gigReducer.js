@@ -29,7 +29,7 @@ export const gigReducer=(state,action)=>{//action will define what to do given b
         case "ADD_FEATURES":
         return{
             ...state,
-            features:[...state.feature,action.payload],
+            features:[...state.features,action.payload],
             };
         case "REMOVE_FEATURES":
             return{

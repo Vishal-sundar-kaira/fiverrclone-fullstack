@@ -5,6 +5,9 @@ import "aos/dist/aos.css"
 import { INITIAL_STATE, gigReducer } from '../../Reducers/gigReducer'
 import axios from 'axios'
 import upload from '../../utils/upload'
+import { useMutation } from '@tanstack/react-query'
+import newRequest from '../../utils/newRequest'
+import { useNavigate } from 'react-router-dom'
 const Add = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,11 +41,27 @@ const Add = () => {
         })]
       )
       setuploading(false);
-      dispatch({type:"ADD_IMAGES",payload:{cover,images}})
+      dispatch({type:"ADD_IMAGES",payload:{cover:res,images:images}})
     }catch(err){
       console.log(err)
     }
   }
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"))
+  const navigate=useNavigate();
+  const mutation = useMutation({
+    mutationFn: () => {
+      return newRequest.post(`/gig/createGig`,state)
+    },
+    onSuccess:()=>{
+      // QueryClient.invalidateQueries("myGigs")//point toward querykey of other whom you want to refresh.
+      navigate("/mygigs")
+    }
+  })
+  const handlecreate=()=>{
+    console.log("handle")
+    mutation.mutate();
+  }
+  console.log(state);
 
   return (
     <div className='add'>
@@ -61,18 +80,18 @@ const Add = () => {
           </select>
           <div className="images">
             <div className="imagesInputs">
-            <label htmlFor="">Cover Image</label>
-          <input type="file" onChange={e=>setsingleFile(e.target.files[0])} />
-          <label htmlFor="">Upload Images</label>
-          <input type="file" onChange={e=>setFiles(e.target.files)} />
-          <button>{uploading?"uploading":"upload"}</button>
+              <label htmlFor="">Cover Image</label>
+              <input type="file" onChange={e=>setsingleFile(e.target.files[0])} />
+              <label htmlFor="">Upload Images</label>
+              <input type="file" onChange={e=>setFiles([...e.target.files])} multiple />
+              <button onClick={handleupload}>{uploading?"uploading":"upload"}</button>
             </div>
           </div>
 
           <label htmlFor="">Description</label>
           <textarea name="desc" id="description" cols="30" rows="10"onChange={handlechange} ></textarea>
-          <button>Create</button>
-        </div>
+          <button onClick={handlecreate}>Create</button>
+        </div>  
         <div data-aos="fade-left"  className="right">
           <label htmlFor="">Service Title</label>
           <input type="text" name='shorttitle' onChange={handlechange} placeholder='eg.One-page web design' />
@@ -80,23 +99,23 @@ const Add = () => {
           <textarea name="shortdesc" id="shortdesc" onChange={handlechange} cols="30" rows="10" placeholder='Short Description of your service'></textarea>
           <label htmlFor="">Delivery Time(e.g. 3days)</label>
           <input type="text" name='deliveryTime' onChange={handlechange} />
-          <label htmlFor="" name="revisionNumber" onChange={handlechange}>Revision Number</label>
-          <input type="number" />
+          <label htmlFor="">Revision Number</label>
+          <input type="number"  name="revisionNumber" onChange={handlechange} />
           <label htmlFor="">Add Features</label>
           <form action="" onSubmit={handlefeature}>
-          <input type="text" placeholder='e.g Page design' />
+          <input type="text"  placeholder='e.g Page design' />
           <button type='submit'>Add</button>
           </form>
           <div className="addedfeatures">
             {state?.features?.map((f)=>{
-              <div className="item" key={f}><button onClick={dispatch({type:"REMOVE_FEATURES",payload:f})}>Feature <span>X</span></button></div>
+              return <div className="item" key={f}><button >{f} <span onClick={()=>dispatch({type:"REMOVE_FEATURES",payload:f})}>X</span></button></div>
             })}
           </div>
+          {/* onClick={dispatch({type:"REMOVE_FEATURES",payload:f})} */}
           <label htmlFor="">price</label>
           <input type="number" name='price' onChange={handlechange} />
         </div>
       </div>
-      <button className='resbutton'>Create</button>
       </div>
     </div>
   )
