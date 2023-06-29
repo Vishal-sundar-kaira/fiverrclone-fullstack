@@ -31,11 +31,11 @@ const Reviews = ({gigid}) => {
     <>
     <div data-aos="fade-up"className="revbox">
           <h2>Reviews</h2>
-          {isLoading?("Loading"):(error?("Something went wrong"):(
+          {isLoading?("Loading"):(error?("Something went wrong"):data?(
             data.map((review)=>{
                 return <Review key={review._id} review={review}/>
             })
-          ))}
+          ):null)}
           <div className="reviewadd">
             <h3>Add a review</h3>
             <form action="" onSubmit={handlesubmit}>

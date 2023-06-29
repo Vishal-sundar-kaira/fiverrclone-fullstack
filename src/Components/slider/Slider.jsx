@@ -26,7 +26,7 @@ return(
     <div className="contain">
     <Carousel responsive={responsive}>
       {children}
-    </Carousel>;
+    </Carousel>
     </div>
 
   </div>

@@ -41,10 +41,10 @@ const Gig = () => {
       return res.data
     })
   })
-  const userId = data?.userId;
+  // const userId = data?.userId;
   const {isLoading:isLoadingUser,error:errorUser,data:dataUser}=useQuery({
     queryKey:["user"],
-    queryFn:()=>newRequest.get(`/user/${userId}`).then(res=>{
+    queryFn:()=>newRequest.get(`/user/${data?.userid}`).then(res=>{
       return res.data
     }),
     enabled:!!data,//run only when data value is enabled or ready.
@@ -57,11 +57,11 @@ const Gig = () => {
         "Loading"
       ) : error ? (
         "Something went wrong"
-      ) : data ? (<><div className="gigcontainer">
+      ) : data? (<><div className="gigcontainer">
         <div className="left">
         <span data-aos="fade-down" className="breadcrumbs">FIVERR and GRAPHICS & DESIGN </span>
         <h1 data-aos="fade-left">{data.title}</h1>
-        {isLoadingUser?"Loadinguser":error?"something went wrong":data?(<div data-aos="fade-left" className="name">
+        {isLoadingUser?"Loadinguser":error?"something went wrong":dataUser?(<div data-aos="fade-left" className="name">
           <img className="img1" src={dataUser.img?dataUser.img:nouser} alt="" />
           <div className="username">{dataUser.username}</div>
           {!isNaN(data.totalStars/data.starNumber)&&(
@@ -78,7 +78,7 @@ const Gig = () => {
         <div data-aos="fade-right" className="imgcontain">
         <Slider slidesToShow={1} arrowsScroll={1}>
           {data.images.map((img)=>{
-            return <img key={img} src={projimg} alt='cant find image'/>
+            return <img key={img} src={img} alt='cant find image'/>
           })}
       </Slider>
         </div>

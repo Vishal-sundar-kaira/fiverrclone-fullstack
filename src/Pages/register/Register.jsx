@@ -25,7 +25,9 @@ const handlechange=(e)=>{
 }
 const handleseller=(e)=>{
   setuser(prev=>{
-    return {...prev,isSeller:[e.target.checked]}
+    console.log(e.target.checked)
+    console.log(user)
+    return {...prev,isSeller:e.target.checked}
   })
 }
 const handlesubmit=async(e)=>{

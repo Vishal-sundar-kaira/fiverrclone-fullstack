@@ -79,9 +79,15 @@ const Gigs = () => {
         </div>
       </div>
           <div className="cards">
-          {isLoading?("loading"):error?("something went wrong"):data.map((gig) => (
-            <GigCard key={gig._id} item={gig} />
-          ))}
+          {isLoading ? (
+  "loading"
+) : error ? (
+  "something went wrong"
+) : Array.isArray(data) ? (
+  data.map((gig) => {
+    return <GigCard key={gig._id} item={gig} />;
+  })
+) : null}
         </div>
     </div>
   )

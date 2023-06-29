@@ -8,7 +8,7 @@ function catCard({ card }) {
     Aos.init({duration:2000});
   },[])
   return (
-    <Link to="/gigs?cat=design">
+    <Link to={`/gigs?cat=${card.title}`}>
       <div data-aos="flip-left" className="catCard">
         <img className="images" src={card.img} alt="" />
         <span className="desc">{card.desc}</span>

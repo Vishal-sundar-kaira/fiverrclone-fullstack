@@ -27,6 +27,7 @@ exports.deleteGig = async(req, res,next) => {
 exports.getGig = async(req, res,next) => {
     try{
         const gig=await Gig.findById(req.params.id)
+        console.log(gig)
         if(!gig) next(createError(404,"Gig not found"))
         res.status(200).send(gig)
     }catch(err){
