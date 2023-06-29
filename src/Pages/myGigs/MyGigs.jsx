@@ -6,7 +6,7 @@ import flag from "../../images/flag.png"
 import gig2 from "../../images/gig2.jpg"
 import Aos from "aos"
 import "aos/dist/aos.css"
-import { QueryClient, useMutation, useQuery } from '@tanstack/react-query'
+import { QueryClient, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import newRequest from '../../utils/newRequest'
 const myGigs = () => {
   useEffect(() => {
@@ -16,6 +16,7 @@ const myGigs = () => {
     Aos.init({duration:2000});
   },[])
   const currentUser = JSON.parse(localStorage.getItem("currentUser"))
+  const queryClient=useQueryClient();
   //to get mygigs
   const {isLoading,error,data}=useQuery({
     queryKey:["myGigs"],
@@ -25,10 +26,10 @@ const myGigs = () => {
   })
   const mutation = useMutation({
     mutationFn: (id) => {
-      return newRequest.delete(`/gig/${id}`)
+      return newRequest.delete(`/gig/delete/${id}`)
     },
     onSuccess:()=>{
-      QueryClient.invalidateQueries("myGigs")//point toward querykey of other whom you want to refresh.
+      queryClient.invalidateQueries("myGigs")//point toward querykey of other whom you want to refresh.
     }
   })
   const handledelete=(id)=>{
@@ -52,7 +53,6 @@ const myGigs = () => {
             <th>Action</th>
           </tr>
           {isLoading?"Loading":error?"error":(data.map(gig=>{
-            {console.log(gig)}
             return(
               <tr data-aos="flip-up" key={gig.id}>
               <td>

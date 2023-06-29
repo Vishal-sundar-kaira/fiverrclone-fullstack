@@ -41,9 +41,10 @@ const Gig = () => {
       return res.data
     })
   })
+  const userId = data?.userId;
   const {isLoading:isLoadingUser,error:errorUser,data:dataUser}=useQuery({
-    queryKey:[`user`],
-    queryFn:()=>newRequest.get(`/user/${data?.userid}`).then(res=>{
+    queryKey:["user"],
+    queryFn:()=>newRequest.get(`/user/${userId}`).then(res=>{
       return res.data
     }),
     enabled:!!data,//run only when data value is enabled or ready.
@@ -60,7 +61,7 @@ const Gig = () => {
         <div className="left">
         <span data-aos="fade-down" className="breadcrumbs">FIVERR and GRAPHICS & DESIGN </span>
         <h1 data-aos="fade-left">{data.title}</h1>
-        {isLoadingUser?"Loadinguser":error?"something went wrong":(<div data-aos="fade-left" className="name">
+        {isLoadingUser?"Loadinguser":error?"something went wrong":data?(<div data-aos="fade-left" className="name">
           <img className="img1" src={dataUser.img?dataUser.img:nouser} alt="" />
           <div className="username">{dataUser.username}</div>
           {!isNaN(data.totalStars/data.starNumber)&&(
@@ -73,7 +74,7 @@ const Gig = () => {
           <h3>{Math.round(data.totalStars/data.starNumber)}</h3>
             </div>
          )}
-        </div>)}
+        </div>):null}
         <div data-aos="fade-right" className="imgcontain">
         <Slider slidesToShow={1} arrowsScroll={1}>
           {data.images.map((img)=>{
@@ -85,7 +86,7 @@ const Gig = () => {
      data-aos-anchor-placement="center-bottom">About This Gig</h2>
         <p data-aos="fade-up"
      data-aos-anchor-placement="center-bottom">{data.desc}</p>
-          {isLoadingUser?"Loadinguser":errorUser?"something went wrong":(<><div data-aos="fade-up"
+          {isLoadingUser?"Loadinguser":errorUser?"something went wrong":dataUser?(<><div data-aos="fade-up"
      data-aos-anchor-placement="center-bottom" className="seller">
             <h2>About The Seller</h2>
             <div className="info2">
@@ -127,7 +128,7 @@ const Gig = () => {
             <div className="para">
               <p>{dataUser.desc}</p>
             </div>
-          </div></>)}
+          </div></>):null}
         <Reviews gigid={id}/>
         </div>
         <div data-aos="fade-left" className="right">
@@ -148,7 +149,7 @@ const Gig = () => {
               </div>
             </div>
             <div className="work">
-                {data&&data.features.map((feature)=>(
+                {data.features?.map((feature)=>(
                     <div className="line" key={feature}>
                     <img src={checkk} alt="" />
                     <h3>{feature}</h3>

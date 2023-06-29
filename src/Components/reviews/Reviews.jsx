@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Reviews.scss"
 import Review from '../review/Review'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { QueryClient, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import newRequest from '../../utils/newRequest'
 const Reviews = ({gigid}) => {
   console.log("yo",gigid)
