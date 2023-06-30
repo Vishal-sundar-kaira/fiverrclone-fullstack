@@ -78,7 +78,7 @@ const Gig = () => {
         <div data-aos="fade-right" className="imgcontain">
         <Slider slidesToShow={1} arrowsScroll={1}>
           {data.images.map((img)=>{
-            return <img key={img} src={img} alt='cant find image'/>
+            return <img key={img} src={img||projimg} alt='cant find image'/>
           })}
       </Slider>
         </div>
