@@ -13,6 +13,7 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import newRequest from '../../utils/newRequest'
 import Slider from '../../Components/slider/Slider'
 import Reviews from '../../Components/reviews/Reviews'
+import Gpay from '../../Components/Gpay/gpay'
 const Gig = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -156,7 +157,8 @@ const Gig = () => {
                   </div>
                 ))}
             </div>
-            <button onClick={handlepayment}>Continue</button>
+            <Gpay/>
+            <button className="button" onClick={handlepayment}>Continue</button>
           </div>
         </div>
         </div></>) : null}

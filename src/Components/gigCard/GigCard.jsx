@@ -34,7 +34,7 @@ const GigCard = ({item}) => {
                         <img src={data.img||nouser} alt="" />
                         <h2>{data.username}</h2>
                     </div>}
-                    <p>{item.desc}</p>
+                    <p>{item.shortdesc}</p>
                     <div className="star">
                         <img src={star} alt="" />
                         <h2>{!isNaN(item.totalStars/item.starNumber)&&Math.round(item.totalStars/item.starNumber)}</h2>
