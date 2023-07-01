@@ -22,6 +22,7 @@ import {
 } from '@tanstack/react-query'
 import Pay from "./Pages/pay/Pay.jsx"
 import Success from "./Pages/success/Success"
+import Gpay from "./Components/Gpay/gpay"
 function App() {
   const queryClient = new QueryClient()
 
@@ -88,6 +89,10 @@ function App() {
         {
           path:"/success",
           element:<Success/>
+        },
+        {
+          path:"/gpay",
+          element:<Gpay/>
         }
       ]
     }

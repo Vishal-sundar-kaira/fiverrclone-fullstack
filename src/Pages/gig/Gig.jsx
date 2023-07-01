@@ -35,7 +35,7 @@ const Gig = () => {
     mutation.mutate();
   }
   const {isLoading,error,data}=useQuery({
-    queryKey:['gig'],
+    queryKey:['gigs'],
     queryFn:()=>newRequest.get(`/gig/single/${id}`).then(res=>{
       // console.log(res.data.userid)
       return res.data
