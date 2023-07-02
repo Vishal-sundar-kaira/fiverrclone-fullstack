@@ -119,27 +119,30 @@ hr{
             width: 40vw;
             height: 50vh;
             margin: 10px 0px;
-        }
+        
         p{
             font-size: 2vw;
         } 
-        .star{
-            img{
-                width: 1.5vw;
-                height: 1.5vh;
-            }
-            h2{
-                font-size: 2vw;
-            }
-        }
-        .status{
-            gap: 25vw;
-            .price{
-                h1{
+        .cardright{
+            .star{
+                img{
+                    width: 1.5vw;
+                    height: 1.5vh;
+                }
+                h2{
                     font-size: 2vw;
                 }
             }
-        }
+            .status{
+                gap: 25vw;
+                .price{
+                    h1{
+                        font-size: 2vw;
+                    }
+                }
+            }
+                }
+            }
        }
        @media (max-width:"480px") {
         .maincard{
@@ -158,6 +161,8 @@ hr{
                 justify-content: center;
                 align-items: center;
                 gap: 10px;
+                height: 100%;
+                width: 50%;
                 .name{
                     img{
                         height: 6vw;

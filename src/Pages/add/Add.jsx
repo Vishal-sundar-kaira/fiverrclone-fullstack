@@ -84,7 +84,7 @@ const Add = () => {
               <input type="file" onChange={e=>setsingleFile(e.target.files[0])} />
               <label htmlFor="">Upload Images</label>
               <input type="file" onChange={e=>setFiles([...e.target.files])} multiple />
-              <button onClick={handleupload}>{uploading?"uploading":"upload"}</button>
+              <div className='butt' onClick={handleupload}>{uploading?"uploading":"upload"}</div>
             </div>
           </div>
 
@@ -114,6 +114,7 @@ const Add = () => {
           {/* onClick={dispatch({type:"REMOVE_FEATURES",payload:f})} */}
           <label htmlFor="">price</label>
           <input type="number" name='price' onChange={handlechange} />
+          <button className='butt' onClick={handlecreate}>Create</button>
         </div>
       </div>
       </div>

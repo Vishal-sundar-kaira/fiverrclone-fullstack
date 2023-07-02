@@ -39,7 +39,8 @@ const Reviews = ({gigid}) => {
           <div className="reviewadd">
             <h3>Add a review</h3>
             <form action="" onSubmit={handlesubmit}>
-              <input type="text" placeholder='Write your opinion'/>
+            <input type="text" placeholder='Write your opinion'/>
+              <div className="response">
               <select name="" id="">
                 <option value={1}>1</option>
                 <option value={2}>2</option>
@@ -48,6 +49,7 @@ const Reviews = ({gigid}) => {
                 <option value={5}>5</option>
               </select>
               <button>Send</button>
+              </div>
             </form>
           </div>
     </div>
