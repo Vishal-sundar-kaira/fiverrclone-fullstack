@@ -1,0 +1,89 @@
+{
+  "hash": "1fc2b882",
+  "browserHash": "fdda210f",
+  "optimized": {
+    "@google-pay/button-react": {
+      "src": "../../node_modules/@google-pay/button-react/dist/index.js",
+      "file": "@google-pay_button-react.js",
+      "fileHash": "f9b3c8d1",
+      "needsInterop": false
+    },
+    "@stripe/react-stripe-js": {
+      "src": "../../node_modules/@stripe/react-stripe-js/dist/react-stripe.esm.js",
+      "file": "@stripe_react-stripe-js.js",
+      "fileHash": "bda1a7ef",
+      "needsInterop": false
+    },
+    "@stripe/stripe-js": {
+      "src": "../../node_modules/@stripe/stripe-js/dist/stripe.esm.js",
+      "file": "@stripe_stripe-js.js",
+      "fileHash": "3c4d27ac",
+      "needsInterop": false
+    },
+    "@tanstack/react-query": {
+      "src": "../../node_modules/@tanstack/react-query/build/lib/index.mjs",
+      "file": "@tanstack_react-query.js",
+      "fileHash": "4448dc31",
+      "needsInterop": false
+    },
+    "aos": {
+      "src": "../../node_modules/aos/dist/aos.js",
+      "file": "aos.js",
+      "fileHash": "76e017c0",
+      "needsInterop": true
+    },
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "87a003f5",
+      "needsInterop": false
+    },
+    "moment": {
+      "src": "../../node_modules/moment/dist/moment.js",
+      "file": "moment.js",
+      "fileHash": "3b7b61cd",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "9a2f1efc",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "991b01cb",
+      "needsInterop": true
+    },
+    "react-icons/gi": {
+      "src": "../../node_modules/react-icons/gi/index.esm.js",
+      "file": "react-icons_gi.js",
+      "fileHash": "7ac087e2",
+      "needsInterop": false
+    },
+    "react-multi-carousel": {
+      "src": "../../node_modules/react-multi-carousel/index.js",
+      "file": "react-multi-carousel.js",
+      "fileHash": "74416693",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "03bf4ebb",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-VDLML7LY": {
+      "file": "chunk-VDLML7LY.js"
+    },
+    "chunk-32AJJKBB": {
+      "file": "chunk-32AJJKBB.js"
+    },
+    "chunk-HYZYPRER": {
+      "file": "chunk-HYZYPRER.js"
+    }
+  }
+}
