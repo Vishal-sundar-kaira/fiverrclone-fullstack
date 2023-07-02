@@ -18,7 +18,7 @@
         h1{
             margin: 0;
             padding: 0;
-            font-size: 2vw;
+            font-size: 30px;
             display: flex;
             align-self: flex-start;
         }
@@ -30,14 +30,14 @@
                 height: 60px;
                 margin: 10px;
                 th{
-                    font-size: 2vw;
+                    font-size: 30px;
                     text-align: start;
                     margin-left: 10px;
                 }
                 td{
 
                     text-align: start;
-                    font-size: 1vw;
+                    font-size: 20px;
                     padding: 15px;
                     button{
                         width: 10vw;
@@ -50,17 +50,17 @@
                     }
                     .image{
                         border-radius: 0px!important;
-                        width: 2vw;
-                        height: 2vw;
+                        width: 20px;
+                        height: 20px;
                         object-fit: cover;
                     }
                     img{
-                        width: 2vw;
-                        height: 2vw;
+                        width: 20px;
+                        height: 20px;
                         cursor: pointer;
                     }
                     h1{
-                        font-size: 1vw;
+                        font-size: 20px;
                         font-weight: 500;
                     }
 
@@ -85,18 +85,18 @@
         .container{
             .title{
                 h1{
-                    font-size: 6vw;
+                    font-size: 30px;
                 }
             }
             table{
                 tr{
                     th{
-                        font-size: 4vw;
+                        font-size: 20px;
                     }
                     td{
-                        font-size: 3vw;
+                        font-size: 20px;
                         button{
-                            font-size: 2vw;
+                            font-size: 20px;
                         }
                     }
                 }

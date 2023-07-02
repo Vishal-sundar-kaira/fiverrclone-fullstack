@@ -39,7 +39,7 @@ exports.getGigs = async(req, res,next) => {
     const filters={//here you can filter and only show required outputs
         ...(q.cat&&{cat:q.cat}),//it means if q.cat is present then spread and allow cat but if not present q.cat then leave it.
         ...((q.min||q.max)&&{price:{...(q.min&&{$gt:q.min}),...(q.max&&{$lt:q.max})}}),
-        ...(q.search&&{title:{$regex:q.search,$options:"i"}}),//option i is for case sensitive it will not be case sesitive now.
+        ...(q.search&&{cat:{$regex:q.search,$options:"i"}}),//option i is for case sensitive it will not be case sesitive now.
         ...(q.userid&&{userid:q.userid})
     }
     try{

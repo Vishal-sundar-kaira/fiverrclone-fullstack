@@ -52,12 +52,11 @@ const message="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit
             <th data-aos="fade-left">Action</th>
           </tr>
           </thead>
-          <tbody>
           {data.map((c)=>{
             return(
               <tr data-aos="flip-up" className='active' key={c.id}>
               <td>
-                <h3>{currentUser.isSeller?c.buyerid:c.sellerid}</h3>
+                <h3>{`${currentUser.isSeller ? c.buyerid.substring(10, 0) : c.sellerid.substring(10,0)}....`}</h3>
               </td>
               <td><Link to={`/message/${c.id}`}className='link'>{c?.lastmessage?.substring(0,80)}....</Link></td>
               <td>{moment(c.updatedAt).fromNow()} </td>
@@ -70,7 +69,6 @@ const message="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit
             </tr>
             )
           })}
-          </tbody>
         </table>
       </div>))}
     </div>

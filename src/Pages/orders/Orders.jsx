@@ -75,7 +75,7 @@ useEffect(()=>{
             </td>
             <td>{order.title}</td>
             <td>{order.price}</td>
-           <td>{currentUser?.isSeller?order.buyerid:order.sellerid}</td> 
+           <td>{`${currentUser.isSeller ? order.buyerid.substring(10, 0) : order.sellerid.substring(10,0)}....`}</td> 
             <td><img src={message} onClick={()=>{handlecontact(order)}} alt="" /></td>
           </tr>)
             })
