@@ -53,7 +53,7 @@ exports.login = [
             const {password,...info}=user._doc
             res.cookie("accessToken",token,{
                 httpOnly:true,
-                domain: "https://vishalkaira-fiverr.netlify.app",
+                sameSite:'none',
                 secure:true,
             }).status(200).send(info)
             console.log(req.cookies.accessToken,"token")
