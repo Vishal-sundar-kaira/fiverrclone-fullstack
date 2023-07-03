@@ -167,7 +167,7 @@ function Navbar() {
                 </Link>
                 <hr />
                 
-                {currentUser.isSeller&&(<><Link className="link" to="/messages" onClick={isresponsive}>
+                {currentUser?.isSeller&&(<><Link className="link" to="/messages" onClick={isresponsive}>
                   Messages
                 </Link>
                 <hr />
