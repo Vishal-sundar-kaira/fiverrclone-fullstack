@@ -3,6 +3,7 @@ const jwt=require("jsonwebtoken");
 const createError = require("../utils/createError");
 exports.verifytoken = async (req, res, next) => {
     const token = req.cookies.accessToken;
+    console.log(token,"done")
     if (!token) next(401,"you are not authenticated")
   
     try {
