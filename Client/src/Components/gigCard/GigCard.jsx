@@ -28,7 +28,7 @@ const GigCard = ({item}) => {
   return (
                 <Link className='link' to={`/gig/${item._id}`}>
                 <div data-aos="zoom-in" className="maincard">
-                    <img className='img' src={item.cover||gig1} alt="no image" />
+                    <img className='img' src={item.cover||gig1} alt="" />
                     <div className="cardright">
                     {isLoading?"loading":error?"something went wrong":<div className="name">
                         <img src={data.img||nouser} alt="" />
