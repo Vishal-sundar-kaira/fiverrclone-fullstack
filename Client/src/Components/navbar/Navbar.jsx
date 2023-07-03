@@ -6,6 +6,7 @@ import Aos from "aos"
 import { GiHamburgerMenu } from 'react-icons/gi';
 import "aos/dist/aos.css"
 import newRequest from "../../utils/newRequest";
+import nouser from "../../images/nouser.png"
 function Navbar() {
   let r=0
   useEffect(()=>{
@@ -146,7 +147,7 @@ function Navbar() {
         <span className="dot">.</span></span>
         </Link>
         <img
-                src={currentUser&&currentUser.img||gig}
+                src={currentUser&&currentUser.img||nouser}
                 alt=""
               />
       </div>
