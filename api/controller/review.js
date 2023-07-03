@@ -1,6 +1,6 @@
 const createError = require("../utils/createError");
 const Gig=require("../models/Gig.js");
-const Review=require("../models/review.js")
+const Review=require("../models/Review.js")
 exports.createReview = async(req, res,next) => {
     try{
         if(req.isSeller){
