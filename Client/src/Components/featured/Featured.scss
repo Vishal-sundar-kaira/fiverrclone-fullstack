@@ -121,6 +121,9 @@
                     .searchin{
                         height: 50px;
                         width: 80%;
+                        input{
+                            width: 100%;
+                        }
                         .searchicon{
                             width: 15%;
                             height: 100%;
@@ -131,7 +134,7 @@
                         }
                     }
                     .searchbtn{
-                        height: 50px;
+                        height: 60px;
                     }
                 }
             }

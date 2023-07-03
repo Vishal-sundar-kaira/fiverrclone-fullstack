@@ -25,7 +25,7 @@ mongoose.connect(process.env.MONGO, {
   });
 app.use(express.json())//first middleware allowing to send json from client side to server
 app.use(cookieParser())//second middleware for cookie for storing jwt token.
-app.use(cors({origin:"https://64a2d67a082c1d00086e42cf--vishalkaira-fiverr.netlify.app",credentials:true}))
+app.use(cors({origin:"https://vishalkaira-fiverr.netlify.app",credentials:true}))
 app.use((err,req,res,next)=>{
   const errorStatus=err.status||500
   const errorMessage=err.message||"something went wrong"
