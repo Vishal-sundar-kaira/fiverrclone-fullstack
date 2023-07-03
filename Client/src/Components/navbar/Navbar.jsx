@@ -146,7 +146,7 @@ function Navbar() {
         <span className="dot">.</span></span>
         </Link>
         <img
-                src={currentUser.img||gig}
+                src={currentUser&&currentUser.img||gig}
                 alt=""
               />
       </div>
