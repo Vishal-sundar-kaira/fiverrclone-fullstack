@@ -13,7 +13,7 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import newRequest from '../../utils/newRequest'
 import Slider from '../../Components/slider/Slider'
 import Reviews from '../../Components/reviews/Reviews'
-import Gpay from '../../Components/Gpay/gpay'
+import Gpay from '../../Components/Gpay/Gpay'
 const Gig = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
