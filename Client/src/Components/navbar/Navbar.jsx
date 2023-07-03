@@ -165,20 +165,16 @@ function Navbar() {
                 <Link className="link" to="/orders" onClick={isresponsive}>
                   orders
                 </Link>
-                <hr />
                 
                 {currentUser?.isSeller&&(<><Link className="link" to="/messages" onClick={isresponsive}>
                   Messages
                 </Link>
-                <hr />
                 <Link className="link" to="/mygigs" onClick={isresponsive}>
                       Gigs
                 </Link>
-                <hr />
                 <Link className="link" to="/add" onClick={isresponsive}>
                       Add New Gig
                 </Link></>)}
-                <hr />
               </div>}
     </>
   );
