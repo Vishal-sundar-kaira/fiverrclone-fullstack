@@ -42,3 +42,10 @@
       }
     }
   }
+  @media (max-width:"480px") {
+    .login{
+      form{
+        width: 250px;
+      }
+    }
+  }

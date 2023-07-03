@@ -141,20 +141,32 @@ function Navbar() {
         <div className="crumb" onClick={isresponsive}>
           <GiHamburgerMenu style={{ fontSize: '30px' }} />
         </div>
-        <Link to='/'>
+        <Link to='/'onClick={isresponsive}>
         <span className="name">fiverr
         <span className="dot">.</span></span>
         </Link>
-        <span className="join">Join</span>
+        <img
+                src={currentUser.img||gig}
+                alt=""
+              />
       </div>
     </div>
     {responsive && <div className="resoptions">
       <hr />
+      {!currentUser?(<Link className="link" to="/login" onClick={isresponsive}>
+                  Login
+                </Link>):(<Link className="link" onClick={handlelogout} >
+                  logout
+                </Link>)}
+                <Link className="link" to="/register" onClick={isresponsive}>
+                  join
+                </Link>
                 <Link className="link" to="/orders" onClick={isresponsive}>
                   orders
                 </Link>
                 <hr />
-                <Link className="link" to="/messages" onClick={isresponsive}>
+                
+                {currentUser.isSeller&&(<><Link className="link" to="/messages" onClick={isresponsive}>
                   Messages
                 </Link>
                 <hr />
@@ -164,7 +176,7 @@ function Navbar() {
                 <hr />
                 <Link className="link" to="/add" onClick={isresponsive}>
                       Add New Gig
-                </Link>
+                </Link></>)}
                 <hr />
               </div>}
     </>

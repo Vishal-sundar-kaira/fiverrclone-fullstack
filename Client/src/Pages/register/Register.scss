@@ -2,9 +2,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  
+    width: 90%;
+    
+    .but{
+      border: none;
+      padding: 20px;
+      color: white;
+      font-weight: 500;
+      font-size: 18px;
+      background-color: #1dbf73;
+      cursor: pointer;
+      display: none;
+    }
     form {
-      width: 960px;
+      width: 90%;
       padding: 100px 0px;
       display: flex;
       gap: 120px;
@@ -102,6 +113,20 @@
             transform: translateX(26px);
           }
         }
+      }
+    }
+  }
+  @media (max-width:480px) {
+    .register{
+      form{
+        flex-direction: column;
+        gap: 0px;
+        button{
+          display: none;
+        }
+      }
+      .but{
+        display: block;
       }
     }
   }

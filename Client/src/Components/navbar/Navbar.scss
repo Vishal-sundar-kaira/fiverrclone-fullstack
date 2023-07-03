@@ -136,6 +136,10 @@
     width: 100%;
     gap: 30vw;
     transition: 0.5s all ease;
+    img{
+      width: 20px;
+      height: 20px;
+    }
     .crumb{
       cursor: pointer;
     }

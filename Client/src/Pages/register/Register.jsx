@@ -104,6 +104,7 @@ const handlesubmit=async(e)=>{
             onChange={handlechange}
           ></textarea>
         </div>
+        <button className="but" type="submit">Register</button>
       </form>
     </div>
   );
