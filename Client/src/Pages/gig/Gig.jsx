@@ -136,7 +136,7 @@ const Gig = () => {
           <div className="gigrightcontainer">
             <div className="money">
               <h2>{data.shorttitle}</h2>
-              <h3>{data.price}</h3>
+              <h3>RS {data.price}</h3>
             </div>
             <p>Contact me privately (via "Contact Seller" below), send the image and I'll quote you the price</p>
             <div className="days">

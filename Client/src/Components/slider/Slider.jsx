@@ -13,7 +13,7 @@ const Slider = ({ children, slidesToShow, arrowsScroll }) => {
   tablet: {
     breakpoint: { max: 1024, min: 484 },
     items: 2,
-    slidesToSlide: 2 // optional, default to 1.
+    slidesToSlide: 1 // optional, default to 1.
   },
   mobile: {
     breakpoint: { max: 480, min: 0 },
