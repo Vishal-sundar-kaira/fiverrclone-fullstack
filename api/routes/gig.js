@@ -7,5 +7,4 @@ router.delete("/delete/:id",verifytoken,deleteGig)
 router.get("/single/:id",getGig)
 router.get("/",getGigs)
 
-
 module.exports = router;

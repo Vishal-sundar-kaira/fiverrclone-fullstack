@@ -3,7 +3,6 @@ const Gig=require("../models/Gig.js")
 exports.createGig = async(req, res,next) => {
     if(!req.isSeller) return next(createError(403,"Only sellers can create a gig!"))
     const newGig=new Gig({
-        userid:req.userId,
         ...req.body,
     }) 
     try{
