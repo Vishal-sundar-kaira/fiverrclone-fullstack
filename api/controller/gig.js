@@ -2,6 +2,7 @@ const createError = require("../utils/createError");
 const Gig=require("../models/Gig.js")
 exports.createGig = async(req, res,next) => {
     if(!req.isSeller) return next(createError(403,"Only sellers can create a gig!"))
+    console.log(req.userId)
     const newGig=new Gig({
         ...req.body,
     }) 

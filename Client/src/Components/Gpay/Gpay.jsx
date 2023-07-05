@@ -32,8 +32,8 @@ const Gpay = () => {
       totalPriceStatus: 'FINAL',
       totalPriceLabel: 'Total',
       totalPrice: '100.00',
-      currencyCode: 'USD',
-      countryCode: 'US',
+      currencyCode: 'INR',
+      countryCode: 'IN',
     },
   }}
   onLoadPaymentData={paymentRequest => {
