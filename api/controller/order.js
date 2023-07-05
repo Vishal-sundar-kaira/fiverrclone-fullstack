@@ -27,7 +27,7 @@ exports.intent = async(req, res, next) => {
         res.status(200).send({
             clientSecret: paymentIntent.client_secret,
           });
-        console.log(stripe,"ok stripe is working")
+        // console.log(stripe,"ok stripe is working")
         const neworder=new Order({
             gigid:gig._id,
             buyerid:req.userId,
