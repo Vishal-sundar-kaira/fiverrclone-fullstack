@@ -41,9 +41,9 @@ exports.intent = async(req, res, next) => {
         })
         await neworder.save();
         console.log("order confirmed")
-        res.status(200).send({
-            clientSecret: paymentIntent.client_secret,
-          });
+        // res.status(200).send({
+        //     clientSecret: paymentIntent.client_secret,
+        //   });
 
     }catch(err){
 
