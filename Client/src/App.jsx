@@ -93,7 +93,7 @@ function App() {
         },
         {
           path:"/gpay",
-          element:<Gpay/>
+          element:<Pay/>
         }
       ]
     }
