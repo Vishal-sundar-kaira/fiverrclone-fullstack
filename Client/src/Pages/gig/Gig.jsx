@@ -157,8 +157,10 @@ const Gig = () => {
                   </div>
                 ))}
             </div>
-            <Gpay/>
-            <button className="button" onClick={handlepayment}>Continue</button>
+            <Link to={`/pay/${id}`}>
+            <button className="button">Continue</button>
+            </Link>
+            
           </div>
         </div>
         </div></>) : null}
