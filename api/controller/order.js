@@ -9,7 +9,7 @@ exports.intent = async(req, res, next) => {
         const gig=await Gig.findById(req.params.id)
         const alreadyorder=await Order.find({gigid:gig._id,buyerid:req.userId})
         console.log(alreadyorder)
-        if(alreadyorder!=null){
+        if(alreadyorder != null && alreadyorder.length > 0){
             return next(createError(400,"Already same gig ordered"))
         }
             const paymentIntent = await stripe.paymentIntents.create({
