@@ -54,7 +54,7 @@ const CheckoutForm = () => {
         }
     
         setIsLoading(true);
-    
+        const returnUrl = process.env.REACT_APP_BASE_URL + "/success";
         const { error } = await stripe.confirmPayment({
           elements,
           confirmParams: {
