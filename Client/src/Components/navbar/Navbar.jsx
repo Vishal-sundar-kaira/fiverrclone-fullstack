@@ -101,7 +101,7 @@ function Navbar() {
           )}
         </div>
       </div>
-      {(active || pathname !== "/") && (
+      {/* {(active || pathname !== "/") && (
         <>
           <hr />
           <div className="menu">
@@ -135,7 +135,7 @@ function Navbar() {
           </div>
           <hr />
         </>
-      )}
+      )} */}
     </div>
     <div className="resnavbar">
       <div className="rescontainer">
