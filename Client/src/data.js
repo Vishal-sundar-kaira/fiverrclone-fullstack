@@ -2,24 +2,24 @@ export const cards = [
     {
       id: 1,
       title: "design",
-      desc: "Add talent to AI",
+      desc: "Design your world",
       img: "https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/f27bec553efc12cc60baed89b8f2223e-1674661140708/ai-artists-2x.png",
     },
     {
       id: 2,
       title: "developer",
-      desc: "Build yor brand",
+      desc: "Build yor products",
       img: "https://images.pexels.com/photos/11295165/pexels-photo-11295165.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
     },
     {
       id: 3,
       title: "marketing",
-      desc: "Customize your site",
+      desc: "Market your products",
       img: "https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/ae11e2d45410b0eded7fba0e46b09dbd-1598561917003/wordpress-2x.png",
     },
     {
       id: 4,
-      title: "AI artist",
+      title: "Content Writer",
       desc: "Share your message",
       img: "https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741669/voiceover-2x.png",
     },
