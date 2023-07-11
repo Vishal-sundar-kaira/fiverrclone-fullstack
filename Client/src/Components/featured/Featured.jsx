@@ -33,7 +33,7 @@ const Featured = () => {
         </div>
       </div>
       <div className="right">
-        {/* <img src={man} alt="" /> */}
+        <img src={man} alt="" />
       </div>
     </div>
     <div className="trust">
