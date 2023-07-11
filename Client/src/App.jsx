@@ -91,10 +91,10 @@ function App() {
           path:"/success",
           element:<Success/>
         },
-        // {
-        //   path:"/gpay",
-        //   element:<Pay/>
-        // }
+        {
+          path:"/gpay",
+          element:<Gpay/>
+        }
       ]
     }
   ])
