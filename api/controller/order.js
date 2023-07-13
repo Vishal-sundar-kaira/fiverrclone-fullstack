@@ -36,7 +36,7 @@ exports.intent = async(req, res, next) => {
             title:gig.title,
             price:gig.price,
             iscompleted:true,
-            payement_intent:paymentIntent.id//paymentIntent.id
+            payement_intent:"Temperory"//paymentIntent.id
 
         })
         await neworder.save();
