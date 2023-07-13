@@ -26,13 +26,14 @@ const Gig = () => {
   // console.log(id)
   const mutation = useMutation({
     mutationFn: () => {
-      return newRequest.post(`/create-payment-intent/${id}`)
+      return newRequest.post(`/order/create-payment-intent/${id}`)
     },
     onSuccess:()=>{
       navigate("/orders")
     }
   })
   const handlepayment=()=>{
+    console.log("payment is send");
     mutation.mutate();
   }
   const {isLoading,error,data}=useQuery({
