@@ -26,7 +26,7 @@ const Gig = () => {
   // console.log(id)
   const mutation = useMutation({
     mutationFn: () => {
-      return newRequest.post(`/order/${id}`)
+      return newRequest.post(`/create-payment-intent/${id}`)
     },
     onSuccess:()=>{
       navigate("/orders")
