@@ -160,7 +160,7 @@ const Gig = () => {
             </div>
             {/* <Gpay/> */}
             <Link to={`/pay/${id}`}>
-            <button className="button" onClick={handlepayment}>Continue</button>
+            <button className="button">Continue</button>
             </Link>
             
           </div>
