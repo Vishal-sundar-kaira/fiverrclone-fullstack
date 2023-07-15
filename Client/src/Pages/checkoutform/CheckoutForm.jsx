@@ -54,13 +54,13 @@ const CheckoutForm = () => {
         }
     
         setIsLoading(true);
-        const returnUrl = process.env.REACT_APP_BASE_URL + "/success";
+        // const returnUrl = process.env.REACT_APP_BASE_URL + "/success";
         console.log(returnUrl)
         const { error } = await stripe.confirmPayment({
           elements,
           confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url: process.env.REACT_APP_BASE_URL + "/success",
+            return_url:"https://vishalkaira-fiverr.netlify.app"
           },
         });
     

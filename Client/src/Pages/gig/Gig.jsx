@@ -158,10 +158,10 @@ const Gig = () => {
                   </div>
                 ))}
             </div>
-            <Gpay/>
-            {/* <Link to={`/pay/${id}`}> */}
+            {/* <Gpay/> */}
+            <Link to={`/pay/${id}`}>
             <button className="button" onClick={handlepayment}>Continue</button>
-            {/* </Link> */}
+            </Link>
             
           </div>
         </div>
