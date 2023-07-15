@@ -87,6 +87,7 @@
                     cursor: pointer;
                     border: none;
                     border-radius: 10px;
+                    display: none;
                 }
             }
          }
@@ -101,6 +102,9 @@
                     width: 85%;
                     button{
                         display: none;
+                    }
+                    .butt{
+                        display: block;
                     }
                 }
                 .right{
