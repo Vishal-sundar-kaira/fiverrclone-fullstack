@@ -3,7 +3,7 @@ const Gig=require("../models/Gig.js")
 const Order=require("../models/Order.js")
 const Stripe = require("stripe")
 exports.intent = async(req, res, next) => {
-    console.log("ok so its inside intent")
+    // console.log("ok so its inside intent")
     try{
         const stripe=new Stripe(process.env.STRIPE)
         const gig=await Gig.findById(req.params.id)
@@ -21,7 +21,7 @@ exports.intent = async(req, res, next) => {
           });
         
 
-        console.log(paymentIntent,"payementIntent is working")
+        // console.log(paymentIntent,"payementIntent is working")
         // after payment create order.
         console.log(paymentIntent.client_secret,"clientsecret is correct")
         res.status(200).send({
@@ -41,10 +41,6 @@ exports.intent = async(req, res, next) => {
         })
         await neworder.save();
         console.log("order confirmed")
-        // res.status(200).send("Order confirmed")
-        // res.status(200).send({
-        //     clientSecret: paymentIntent.client_secret,
-        //   });
 
     }catch(err){
 
@@ -53,8 +49,6 @@ exports.intent = async(req, res, next) => {
 };
 exports.getOrders = async (req, res ,next) => {
     try{
-        console.log("buy")
-        //so we need to search on the basis of if i am seller or buyer
         const orders=await Order.find({
             ...(req.isSeller?{sellerid:req.userId}:{buyerid:req.userId}),
             iscompleted:true
