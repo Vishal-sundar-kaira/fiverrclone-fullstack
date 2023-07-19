@@ -159,15 +159,20 @@ function Navbar() {
                 </Link>):(<Link className="link" onClick={handlelogout} >
                   logout
                 </Link>)}
-                <Link className="link" to="/register" onClick={isresponsive}>
+                {!currentUser?(<Link className="link" to="/register" onClick={isresponsive}>
                   join
-                </Link>
-                <Link className="link" to="/orders" onClick={isresponsive}>
-                  orders
-                </Link>
-                <Link className="link" to="/messages" onClick={isresponsive}>
-                  Messages
-                </Link>
+                </Link>):(
+                  <>
+                      <Link className="link" to="/orders" onClick={isresponsive}>
+                        orders
+                      </Link>
+                      <Link className="link" to="/messages" onClick={isresponsive}>
+                        Messages
+                      </Link>
+                  </>
+
+                )}
+
                 {currentUser?.isSeller&&(<>
                 <Link className="link" to="/mygigs" onClick={isresponsive}>
                       Gigs
