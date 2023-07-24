@@ -5,7 +5,9 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
+import { useNavigate } from "react-router-dom";
 const CheckoutForm = () => {
+  const navigate=useNavigate();
     const stripe = useStripe();
     const elements = useElements();
 
@@ -60,10 +62,17 @@ const CheckoutForm = () => {
           elements,
           confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url:"https://vishalkaira-fiverr.netlify.app"
+            // navigate("/order")
+            // return_url:"https://vishalkaira-fiverr.netlify.app"
           },
         });
-    
+        if (error) {
+          // Handle the error, show a message, etc.
+          setMessage("Started error")
+        } else {
+          // Payment confirmation was successful, navigate to "/order" page
+          navigate('/order');
+        }
         // This point will only be reached if there is an immediate error when
         // confirming the payment. Otherwise, your customer will be redirected to
         // your `return_url`. For some payment methods like iDEAL, your customer will
