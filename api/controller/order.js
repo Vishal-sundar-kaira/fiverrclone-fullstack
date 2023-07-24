@@ -13,7 +13,7 @@ exports.intent = async(req, res, next) => {
             return next(createError(400,"Already same gig ordered"))
         }
             const paymentIntent = await stripe.paymentIntents.create({
-            amount: gig.price,
+            amount: gig.price*100,
             currency: "inr",
             automatic_payment_methods: {
               enabled: true,
