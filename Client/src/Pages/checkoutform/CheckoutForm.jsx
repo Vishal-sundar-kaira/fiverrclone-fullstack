@@ -63,7 +63,7 @@ const CheckoutForm = () => {
           confirmParams: {
             // Make sure to change this to your payment completion page
             // navigate("/order")
-            // return_url:"https://vishalkaira-fiverr.netlify.app"
+            return_url:"https://vishalkaira-fiverr.netlify.app"
           },
         });
         if (error) {
