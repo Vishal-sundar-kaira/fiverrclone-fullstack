@@ -13,7 +13,7 @@ const Success = () => {
                 await newRequest.put("/order",{payment_intent})
                 setTimeout(()=>{
                     navigate("/order")
-                },5000)
+                },2000)
             }catch(err){
                 console.log(err);
             }

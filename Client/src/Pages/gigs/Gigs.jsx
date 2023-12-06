@@ -80,7 +80,7 @@ const Gigs = () => {
       </div>
           <div className="cards">
           {isLoading ? (
-  "loading"
+  "Sorry for the inconvenience. There will be a delay of up to 1 minute due to a cold start problem in the free Render deployment plan."
 ) : error ? (
   "something went wrong"
 ) : Array.isArray(data) ? (
