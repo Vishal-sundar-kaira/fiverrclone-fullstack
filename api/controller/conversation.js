@@ -12,6 +12,7 @@ exports.createConversation = async(req, res, next) => {
             Readbybuyer:!req.isSeller,
 
         })
+        console.log(newConversation+"save")
         const savedConversation=await newConversation.save();
 
         res.status(200).send(savedConversation);
