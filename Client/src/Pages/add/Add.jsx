@@ -84,7 +84,7 @@ const Add = () => {
               <input type="file" onChange={e=>setsingleFile(e.target.files[0])} />
               <label htmlFor="">Upload Images</label>
               <input type="file" onChange={e=>setFiles([...e.target.files])} multiple />
-              <div className='butt' onClick={handleupload}>{uploading?"uploading":"upload"}</div>
+              <div className='butt' onClick={handleupload}>{uploading?"uploading":"upload"}gsgfsf</div>
             </div>
           </div>
 
