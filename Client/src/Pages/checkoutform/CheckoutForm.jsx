@@ -60,11 +60,11 @@ const CheckoutForm = () => {
         // console.log(returnUrl)
         const { error } = await stripe.confirmPayment({
           elements,
-          // confirmParams: {
-          //   // Make sure to change this to your payment completion page
-          //   // navigate("/order")
-          //   return_url:"https://vishalkaira-fiverr.netlify.app"
-          // },
+          confirmParams: {
+            // Make sure to change this to your payment completion page
+            // navigate("/order")
+            return_url:"https://vishalkaira-fiverr.netlify.app/order"
+          },
         });
         if (error) {
           // Handle the error, show a message, etc.
