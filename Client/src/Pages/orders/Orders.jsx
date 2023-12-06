@@ -35,18 +35,13 @@ const handlecontact=async(order)=>{
   console.log(id)
 
   try{
+    console.log("its here")
     const res=await newRequest.get(`/conversation/single/${id}`)
-    if(res=="not found"){
-      console.log("This working requrest going")
-      const res=await newRequest.post(`/conversation`,{
-        to:currentUser.isSeller?buyerid:sellerid,
-      });
-      navigate(`/message/${res.data.id}`);
-    }
+    console.log(res)
     navigate(`/message/${res.data.id}`);
   }catch(err){
+    console.log("its not here oo but its in catch")
     if(err.response.status===404){
-      console.log("This working requrest going")
       const res=await newRequest.post(`/conversation`,{
         to:currentUser.isSeller?buyerid:sellerid,
       });
