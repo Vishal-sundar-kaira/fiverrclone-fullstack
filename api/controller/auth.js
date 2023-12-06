@@ -42,7 +42,9 @@ exports.login = [
                 return next(createError(404, "user not found"))
             }
             const iscorrect=bcrypt.compareSync(req.body.password,user.password)
-            if(!iscorrect) next(createError(400,"Wrong password use correct password"))
+            if(!iscorrect){
+                return next(createError(400,"Wrong password use correct password"))
+            } 
             // console.log("1")
             const token=jwt.sign(
             {

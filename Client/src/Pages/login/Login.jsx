@@ -18,6 +18,7 @@ function Login() {
       navigate("/")
     }catch(err){
       seterror(err.response.data)
+      alert("There is some error Check your username or password")
       console.log(err)
     }
 
@@ -41,7 +42,7 @@ function Login() {
           onChange={e=>setpassword(e.target.value)}
         />
         <button type="submit">Login</button>
-        {error && alert(error)}
+        {/* {error && alert(error)&& seterror(null)} */}
       </form>
     </div>
   );

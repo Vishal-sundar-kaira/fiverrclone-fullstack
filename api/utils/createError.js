@@ -3,7 +3,7 @@ const createError = (statusCode, message) => {
     error.statusCode = statusCode;
     error.message = message;
   
-    return error;
+    return error.message;
   };
   
   module.exports = createError;

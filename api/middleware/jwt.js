@@ -7,7 +7,7 @@ exports.verifytoken = async (req, res, next) => {
     if (!token) next(401,"you are not authenticated")
   
     try {
-      const payload = await jwt.verify(token, process.env.JWT_KEY);
+      const payload = jwt.verify(token, process.env.JWT_KEY);
       req.userId = payload.id;
       req.isSeller = payload.isSeller;
       next();
