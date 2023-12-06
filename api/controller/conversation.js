@@ -4,6 +4,7 @@ const Order=require("../models/Order.js")
 const Conversation=require("../models/Conversation.js")
 exports.createConversation = async(req, res, next) => {
     try{
+        console.log("convo backend linked correctly")
         const newConversation=new Conversation({
             id:req.isSeller?req.userId+req.body.to:req.body.to+req.userId,
             sellerid:req.isSeller?req.userId:req.body.to,
