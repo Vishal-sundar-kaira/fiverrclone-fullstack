@@ -42,7 +42,7 @@ const handlecontact=async(order)=>{
   }catch(err){
     console.log("its not here oo but its in catch")
     if(err.response.status===404){
-      const res=await newRequest.post(`/conversation`,{
+      const res=await newRequest.post(`/conversation/create`,{
         to:currentUser.isSeller?buyerid:sellerid,
       });
       navigate(`/message/${res.data.id}`);
