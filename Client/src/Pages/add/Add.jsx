@@ -84,13 +84,13 @@ const Add = () => {
               <input type="file" onChange={e=>setsingleFile(e.target.files[0])} />
               <label htmlFor="">Upload Images</label>
               <input type="file" onChange={e=>setFiles([...e.target.files])} multiple />
-              <div className='butt' onClick={handleupload}>{uploading?"uploading":"upload"}gsgfsf</div>
+              <div className='butt' onClick={handleupload}>{uploading?"uploading":"upload"}</div>
             </div>
           </div>
 
           <label htmlFor="">Description</label>
           <textarea name="desc" id="description" cols="30" rows="10"onChange={handlechange} ></textarea>
-          <button onClick={handlecreate}>Create</button>
+          <button className='butt' onClick={handlecreate}>Create</button>
         </div>  
         <div data-aos="fade-left"  className="right">
           <label htmlFor="">Service Title</label>
@@ -114,7 +114,7 @@ const Add = () => {
           {/* onClick={dispatch({type:"REMOVE_FEATURES",payload:f})} */}
           <label htmlFor="">price</label>
           <input type="number" name='price' onChange={handlechange} />
-          <button className='butt' onClick={handlecreate}>Create</button>
+          <button className='resbut' onClick={handlecreate}>Create</button>
         </div>
       </div>
       </div>

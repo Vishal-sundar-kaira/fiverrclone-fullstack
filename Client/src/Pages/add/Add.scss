@@ -89,6 +89,17 @@
                     border-radius: 10px;
                     // display: none;
                 }
+                .resbut{
+                    display: none;
+                    width: 100px;
+                    height: 40px;
+                    font-size: 20px;
+                    color: white;
+                    background-color: rgb(4, 172, 4);
+                    cursor: pointer;
+                    border: none;
+                    border-radius: 10px;
+                }
             }
          }
     }
@@ -104,23 +115,15 @@
                         display: none;
                     }
                     .butt{
-                        display: block;
+                        display: none;
                     }
                 }
                 .right{
                     width: 85%;
+                    .resbut{
+                        display: block;
+                    }
                 }
-            }
-            .resbutton{
-                display: block;
-                width: 100px;
-                height: 40px;
-                font-size: 20px;
-                color: white;
-                background-color: rgb(4, 172, 4);
-                cursor: pointer;
-                border: none;
-                border-radius: 10px;
             }
         }
     }
