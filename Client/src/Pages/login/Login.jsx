@@ -41,7 +41,7 @@ function Login() {
           onChange={e=>setpassword(e.target.value)}
         />
         <button type="submit">Login</button>
-        {error && error}
+        {error && alert(error)}
       </form>
     </div>
   );
