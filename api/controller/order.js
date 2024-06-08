@@ -48,11 +48,13 @@ exports.intent = async(req, res, next) => {
     }
 };
 exports.getOrders = async (req, res ,next) => {
+
     try{
         const orders=await Order.find({
             ...(req.isSeller?{sellerid:req.userId}:{buyerid:req.userId}),
             iscompleted:true
         })
+        console.log(orders,"orders created")
         res.status(200).send(orders);
     }catch(err){
         next(err)

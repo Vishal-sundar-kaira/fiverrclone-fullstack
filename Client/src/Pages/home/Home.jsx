@@ -23,12 +23,12 @@ const Home = () => {
     <>
     <div className='Home'>
       <Featured/>
-      <h1>Popular Services</h1>
+      {/* <h1>Popular Services</h1>
       <Slider slidesToShow={4} arrowsScroll={2}>
         {cards.map((card) => (
           <CatCard key={card.id} card={card} />
         ))}
-      </Slider>
+      </Slider> */}
       <div className="features">
         <div  className="container">
           <div data-aos="fade-up-right" className="left">
