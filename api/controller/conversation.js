@@ -25,6 +25,7 @@ exports.getSingleConversation = async(req, res, next) => {
     try{
         console.log('conversation')
         const conversation=await Conversation.findOne({id:req.params.id})
+        console.log(conversation,"no conversation")
         if(!conversation) return next(createError(404,"Not found"))
         res.status(200).send(conversation);
     }catch(err){
