@@ -66,7 +66,7 @@ const Footer = () => {
           </div>
           <div className="rowfoot">
             <div className="colfoot">
-            <h2>More From Fiverr</h2>
+            <h2>More From Gigzo</h2>
             <span>Liverr Business</span>
             <span>Liverr Pro</span>
             <span>Liverr Logo Maker</span>
@@ -84,8 +84,8 @@ const Footer = () => {
         <hr />
             <div className="copycontainer">
               <div className="content">
-                <div className="logo">fiverr.</div>
-                <div className="rights">&copy; Fiverr International Ltd.2023</div>
+                <div className="logo">Gigzo.</div>
+                <div className="rights">&copy; Gigzo International Ltd.2023</div>
               </div>
               <div className="symbols">
                 <img src={facebook} alt="" />
