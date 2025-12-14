@@ -53,7 +53,7 @@ function Navbar() {
       <div data-aos="flip-down" className="container">
         <div className="logo">
           <Link className="link" to="/">
-            <span className="text">fiverr</span>
+            <span className="text">Gigzo</span>
           </Link>
           <span className="dot">.</span>
         </div>
@@ -143,7 +143,7 @@ function Navbar() {
           <GiHamburgerMenu style={{ fontSize: '30px' }} />
         </div>
         <Link to='/'onClick={isresponsive}>
-        <span className="name">fiverr
+        <span className="name">Gigzo
         <span className="dot">.</span></span>
         </Link>
         <img
