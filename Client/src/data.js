@@ -12,23 +12,17 @@ export const cards = [
       img: "https://images.pexels.com/photos/11295165/pexels-photo-11295165.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
     },
     {
-      id: 3,
-      title: "marketing",
-      desc: "Market your products",
-      img: "https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/ae11e2d45410b0eded7fba0e46b09dbd-1598561917003/wordpress-2x.png",
-    },
-    {
       id: 4,
       title: "Content Writer",
       desc: "Share your message",
-      img: "https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741669/voiceover-2x.png",
+      img: "https://res.cloudinary.com/vishal-kaira/image/upload/v1765716367/fiverr/premium_photo-1726797795204-18b4874e8380_zuhcmt.avif",
     },
     {
-      id: 5,
-      title: "Writer",
-      desc: "Engage your audience",
-      img: "https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741663/animated-explainer-2x.png",
-    },
+      id: 3,
+      title: "marketing",
+      desc: "Market your products",
+      img: "https://res.cloudinary.com/vishal-kaira/image/upload/v1765716412/fiverr/premium_photo-1683980578016-a1f980719ec2_hahvmj.avif",
+    }
   ];
   
   export const projects = [
