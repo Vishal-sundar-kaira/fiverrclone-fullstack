@@ -15,13 +15,13 @@ export const cards = [
       id: 4,
       title: "Content Writer",
       desc: "Share your message",
-      img: "https://res.cloudinary.com/vishal-kaira/image/upload/v1765716367/fiverr/premium_photo-1726797795204-18b4874e8380_zuhcmt.avif",
+      img: "https://res.cloudinary.com/vishal-kaira/image/upload/v1765717352/fiverr/premium_photo-1725075087986-9b2d97ef8c66_arsyqu.avif",
     },
     {
       id: 3,
       title: "marketing",
       desc: "Market your products",
-      img: "https://res.cloudinary.com/vishal-kaira/image/upload/v1765717352/fiverr/premium_photo-1725075087986-9b2d97ef8c66_arsyqu.avif",
+      img: "https://res.cloudinary.com/vishal-kaira/image/upload/v1765717583/fiverr/photo-1586880244406-556ebe35f282_gijpyt.avif",
     }
   ];
   
