@@ -21,7 +21,7 @@ export const cards = [
       id: 3,
       title: "marketing",
       desc: "Market your products",
-      img: "https://res.cloudinary.com/vishal-kaira/image/upload/v1765716412/fiverr/premium_photo-1683980578016-a1f980719ec2_hahvmj.avif",
+      img: "https://res.cloudinary.com/vishal-kaira/image/upload/v1765717352/fiverr/premium_photo-1725075087986-9b2d97ef8c66_arsyqu.avif",
     }
   ];
   
