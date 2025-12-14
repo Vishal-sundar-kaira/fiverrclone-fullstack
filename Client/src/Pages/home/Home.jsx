@@ -113,7 +113,7 @@ const Home = () => {
         <div className="container">
           <div data-aos="fade-up-right"  className="left">
             <div className="text">
-              <h1>fiverr<span> business</span> </h1> 
+              <h1>Gigzo<span> business</span> </h1> 
               <h2>A business solution designed for <span>teams</span> </h2>
               <p>Upgrade to a curated experience packed with tools and benefits, dedicated to businesses</p>
               <div className="head">
@@ -128,7 +128,7 @@ const Home = () => {
                 <img src={check} alt="" />
                 <h3>Manage teamwork and boost productivity with one powerful workspace</h3>
               </div>
-              <button className="button">Explore fiverr Business</button>
+              <button className="button">Explore Gigzo Business</button>
             </div>
           </div>
           <div data-aos="fade-up-left"  className="right">
